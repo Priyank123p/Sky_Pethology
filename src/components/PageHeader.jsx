@@ -30,7 +30,7 @@ const PageHeader = () => {
     // Generate random particles
     // Memoize to prevent re-generation on every render (though they are random, we want them consistent while viewing)
     const particles = useMemo(() => {
-        return Array.from({ length: 100 }).map((_, i) => ({
+        return Array.from({ length: 140 }).map((_, i) => ({
             id: i,
             x: Math.random() * 100,
             y: Math.random() * 100,
