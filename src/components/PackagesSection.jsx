@@ -90,7 +90,7 @@ const PackagesSection = () => {
                                             </p>
                                         </div>
 
-                                        <h3 className="mb-0" style={{ color: '#F37021', fontWeight: '800' }}>
+                                        <h3 className="mb-0" style={{ color: '#F37021', fontWeight: '500', fontSize: '1.3rem' }}>
                                             ₹ {pkg.price}
                                         </h3>
                                     </Card.Body>

@@ -34,23 +34,23 @@ const Navigation = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto align-items-center gap-3">
+                    <Nav className="mx-auto align-items-center gap-3">
                         <Nav.Link as={Link} to="/" className="fw-medium">Home</Nav.Link>
                         <Nav.Link as={Link} to="/about" className="fw-medium">About Us</Nav.Link>
                         <Nav.Link as={Link} to="/tests" className="fw-medium">Tests</Nav.Link>
                         <Nav.Link as={Link} to="/packages" className="fw-medium">Packages</Nav.Link>
                         <Nav.Link as={Link} to="/contact" className="fw-medium">Contact</Nav.Link>
 
-                        <Button
-                            as={Link}
-                            to="/contact"
-                            className="d-flex align-items-center gap-2 rounded-pill px-4 border-0"
-                            style={{ backgroundColor: 'var(--primary-blue)' }}
-                        >
-                            <CalendarCheck size={18} />
-                            <span>Book Appointment</span>
-                        </Button>
                     </Nav>
+                    <Button
+                        as={Link}
+                        to="/contact"
+                        className="d-flex align-items-center gap-2 rounded-pill px-4 border-0"
+                        style={{ backgroundColor: 'var(--primary-blue)' }}
+                    >
+                        <CalendarCheck size={18} />
+                        <span>Book Appointment</span>
+                    </Button>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
