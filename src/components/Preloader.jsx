@@ -29,27 +29,8 @@ const Preloader = ({ onComplete }) => {
                         transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
                         className="mb-4"
                     >
-                        <img src={logo} alt="Sky Pathology Lab Logo" style={{ width: '120px', height: 'auto' }} />
+                        <img src={logo} alt="Sky Pathology Lab Logo" style={{ width: '140px', height: 'auto' }} />
                     </motion.div>
-
-                    <motion.h4
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                        className="text-dark fw-bold mt-3"
-                        style={{ letterSpacing: '1px' }}
-                    >
-                        Sky Pathology Lab
-                    </motion.h4>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1, duration: 0.8 }}
-                        className="text-primary-blue"
-                    >
-                        Precision You Can Trust
-                    </motion.p>
                 </motion.div>
             )}
         </AnimatePresence>

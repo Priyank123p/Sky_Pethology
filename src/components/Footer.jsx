@@ -10,11 +10,7 @@ const Footer = () => {
                 <Row className="gy-4">
                     <Col lg={4} md={12}>
                         <div className="d-flex align-items-center mb-3">
-                            <img src={logo} alt="Logo" width="50" className="me-2" />
-                            <div>
-                                <h5 className="fw-bold text-dark mb-0">Sky Pathology Lab</h5>
-                                <small className="text-muted">Precision You Can Trust</small>
-                            </div>
+                            <img src={logo} alt="Logo" width="80" className="me-2" />
                         </div>
                         <p className="text-secondary small mb-4">
                             Providing world-class diagnostic services with state-of-the-art technology and a team of expert pathologists. ISO Approved.

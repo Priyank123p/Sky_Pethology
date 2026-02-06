@@ -26,15 +26,12 @@ const Navigation = () => {
                 <Navbar.Brand href="#home" className="d-flex align-items-center">
                     <img
                         src={logo}
-                        width="50"
+                        width="90"
                         height="auto"
                         className="d-inline-block align-top me-2"
                         alt="Sky Pathology Logo"
                     />
-                    <div className="d-flex flex-column">
-                        <span className="fw-bold text-dark h5 mb-0" style={{ fontFamily: 'Poppins' }}>Sky Pathology</span>
-                        <span className="text-secondary small" style={{ fontSize: '0.75rem' }}>Precision You Can Trust</span>
-                    </div>
+                    
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
