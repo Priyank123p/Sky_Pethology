@@ -34,7 +34,7 @@ const PageHeader = () => {
     const { title, description } = pageDetails[path];
 
     return (
-        <div className="page-header position-relative" style={{ marginTop: '76px' }}>
+        <div className="page-header position-relative" style={{ marginTop: '7%' }}>
             {/* Background with overlay */}
             <div
                 className="position-absolute top-0 start-0 w-100 h-100"

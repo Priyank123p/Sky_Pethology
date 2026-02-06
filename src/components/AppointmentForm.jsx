@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Card, Toast, ToastContainer, Dropdown } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Card, Dropdown } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { CalendarCheck, Send } from 'lucide-react';
+import Swal from 'sweetalert2';
 
 const AppointmentForm = () => {
-    const [showToast, setShowToast] = useState(false);
     const [validated, setValidated] = useState(false);
     const [selectedTests, setSelectedTests] = useState([]);
 
@@ -28,7 +28,17 @@ const AppointmentForm = () => {
             event.stopPropagation();
             setValidated(true);
         } else {
-            setShowToast(true);
+            Swal.fire({
+                title: "Success!",
+                text: "Request received! We will call you shortly.",
+                icon: "success",
+                confirmButtonColor: "#d4af37", // approximate gold color
+                background: "#ffffff",
+                customClass: {
+                    title: 'fw-bold',
+                    popup: 'rounded-4'
+                }
+            });
             setSelectedTests([]); // Reset
             form.reset();
             setValidated(false);
@@ -57,13 +67,13 @@ const AppointmentForm = () => {
                                             <Col md={12}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Full Name</Form.Label>
-                                                    <Form.Control required type="text" placeholder="John Doe" className="bg-light border-0 py-3" />
+                                                    <Form.Control required type="text" placeholder="Name" className="bg-light border-0 py-3" />
                                                 </Form.Group>
                                             </Col>
                                             <Col md={6}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Mobile Number</Form.Label>
-                                                    <Form.Control required type="tel" placeholder="+91 98765 43210" className="bg-light border-0 py-3" />
+                                                    <Form.Control required type="tel" placeholder="Number" className="bg-light border-0 py-3" />
                                                 </Form.Group>
                                             </Col>
                                             <Col md={6}>
@@ -131,15 +141,6 @@ const AppointmentForm = () => {
                 </Row>
             </Container>
 
-            <ToastContainer position="top-end" className="p-3" style={{ zIndex: 1100 }}>
-                <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide bg="success">
-                    <Toast.Header>
-                        <strong className="me-auto text-success">Success</strong>
-                        <small>Just now</small>
-                    </Toast.Header>
-                    <Toast.Body className="text-white">Request received! We will call you shortly.</Toast.Body>
-                </Toast>
-            </ToastContainer>
         </section>
     );
 };

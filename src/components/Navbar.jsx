@@ -26,12 +26,11 @@ const Navigation = () => {
                 <Navbar.Brand href="#home" className="d-flex align-items-center">
                     <img
                         src={logo}
-                        width="90"
-                        height="auto"
-                        className="d-inline-block align-top me-2"
                         alt="Sky Pathology Logo"
+                        className="d-inline-block align-top me-2"
+                        style={{ height: '70px', width: 'auto', objectFit: 'contain' }}
                     />
-                    
+
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -41,15 +40,6 @@ const Navigation = () => {
                         <Nav.Link as={Link} to="/tests" className="fw-medium">Tests</Nav.Link>
                         <Nav.Link as={Link} to="/packages" className="fw-medium">Packages</Nav.Link>
                         <Nav.Link as={Link} to="/contact" className="fw-medium">Contact</Nav.Link>
-
-                        <Button
-                            variant="outline-primary"
-                            className="d-flex align-items-center gap-2 rounded-pill px-4"
-                            style={{ borderColor: 'var(--primary-blue)', color: 'var(--primary-blue)' }}
-                        >
-                            <Phone size={18} />
-                            <span>Call Now</span>
-                        </Button>
 
                         <Button
                             as={Link}
