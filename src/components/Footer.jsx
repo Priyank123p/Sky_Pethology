@@ -8,14 +8,14 @@ const Footer = () => {
         <footer className="footer-section pt-5 pb-3">
             <Container>
                 <Row className="gy-4">
-                    <Col lg={4} md={12}>
-                        <div className="d-flex align-items-center mb-3">
+                    <Col lg={4} md={12} className="text-center text-lg-start">
+                        <div className="d-flex align-items-center justify-content-center justify-content-lg-start mb-3">
                             <img src={logo} alt="Logo" width="80" className="me-2" />
                         </div>
-                        <p className="text-secondary small mb-4" style={{ lineHeight: '1.8' }}>
+                        <p className="text-secondary small mb-4 mx-auto mx-lg-0" style={{ lineHeight: '1.8', maxWidth: '300px' }}>
                             Providing world-class diagnostic services with state-of-the-art technology and a team of expert pathologists. ISO Approved.
                         </p>
-                        <div className="d-flex gap-3">
+                        <div className="d-flex gap-3 justify-content-center justify-content-lg-start">
                             <div className="social-icon-wrapper"><Facebook size={20} /></div>
                             <div className="social-icon-wrapper"><Instagram size={20} /></div>
                             <div className="social-icon-wrapper"><Twitter size={20} /></div>

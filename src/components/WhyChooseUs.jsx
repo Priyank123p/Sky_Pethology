@@ -49,8 +49,9 @@ const WhyChooseUs = () => {
                         borderTopLeftRadius: '50px',
                         borderBottomLeftRadius: '50px',
                         marginLeft: 'auto',
-                        width: '95%',
-                        minHeight: '600px',
+                        width: '100%', // Full width on mobile
+                        maxWidth: '95%', // 95% only on larger screens if desired, but 100% usually safer for responsive
+                        // minHeight: '600px', // Removed hardcoded height
                         display: 'flex',
                         alignItems: 'center'
                     }}

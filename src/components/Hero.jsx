@@ -12,13 +12,13 @@ const Hero = () => {
                 minHeight: '100vh',
                 background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
                 overflow: 'hidden',
-                paddingTop: '120px',
+                paddingTop: '100px', // Reduced from 120
                 paddingBottom: '50px'
             }}
         >
-            {/* Decorative Blur */}
+            {/* Decorative Blur - Hidden on mobile to improve performance/layout */}
             <div
-                className="position-absolute bg-primary-blue rounded-circle"
+                className="position-absolute bg-primary-blue rounded-circle d-none d-lg-block"
                 style={{
                     width: '500px',
                     height: '500px',
@@ -32,8 +32,15 @@ const Hero = () => {
             ></div>
 
             <Container className="position-relative z-1">
-                <Row className="align-items-center">
-                    <Col lg={6} className="mb-5 mb-lg-0">
+                <Row className="align-items-center flex-column-reverse flex-lg-row"> {/* Reverse column order on mobile: Text below image or standard stacking */}
+                    {/* Actually, usually Text first then Image is better on Desktop. On mobile, Image first then Text? Or Text then Image? 
+                       Bootstrap 'flex-column-reverse' on Row makes the *last* col appear *first*. 
+                       If we want Text (Co1 1) -> Image (Col 2) on Desktop, and Image (Col 2) -> Text (Col 1) on Mobile, we need flex-column-reverse. 
+                       But usually standard is fine: Text then Image. Let's stick to standard stacking: Text then Image.
+                       If we want Image top on mobile: use order classes. 
+                       Let's keep text on top for now as it's the H1.
+                    */}
+                    <Col lg={6} className="mb-5 mb-lg-0 text-center text-lg-start mt-4 mt-lg-0">
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -45,17 +52,17 @@ const Hero = () => {
                             <h1 className="display-4 display-md-3 fw-bold mb-3" style={{ color: '#0f172a', lineHeight: '1.2' }}>
                                 Trusted Diagnostic & <span style={{ color: 'var(--primary-blue)' }}>Pathology Services</span>
                             </h1>
-                            <p className="lead text-secondary mb-4" style={{ maxWidth: '90%' }}>
+                            <p className="lead text-secondary mb-4 mx-auto mx-lg-0" style={{ maxWidth: '90%' }}>
                                 Accurate. Reliable. Fast Reports. Experience world-class diagnostics with home sample collection.
                             </p>
 
-                            <div className="d-flex flex-wrap gap-3">
-                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <div className="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-100 w-sm-auto">
                                     <Button
                                         as="a"
                                         href="/contact"
                                         size="lg"
-                                        className="border-0 rounded-pill px-4 py-3 d-flex align-items-center gap-2 shadow"
+                                        className="border-0 rounded-pill px-4 py-3 d-flex align-items-center justify-content-center gap-2 shadow w-100"
                                         style={{ backgroundColor: 'var(--primary-blue)' }}
                                     >
                                         <Calendar size={20} />
@@ -63,11 +70,11 @@ const Hero = () => {
                                     </Button>
                                 </motion.div>
 
-                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-100 w-sm-auto">
                                     <Button
                                         size="lg"
                                         variant="success"
-                                        className="border-0 rounded-pill px-4 py-3 d-flex align-items-center gap-2 shadow"
+                                        className="border-0 rounded-pill px-4 py-3 d-flex align-items-center justify-content-center gap-2 shadow w-100"
                                         style={{ backgroundColor: '#25D366' }}
                                         href="https://wa.me/919510766011"
                                         target="_blank"
@@ -80,7 +87,7 @@ const Hero = () => {
                                 </motion.div>
                             </div>
 
-                            <div className="mt-5 d-flex gap-4">
+                            <div className="mt-5 d-flex gap-4 justify-content-center justify-content-lg-start">
                                 <div className="d-flex flex-column">
                                     <span className="fw-bold h4 mb-0 text-dark">10k+</span>
                                     <span className="text-muted small">Happy Patients</span>
@@ -101,12 +108,10 @@ const Hero = () => {
                             className="position-relative"
                         >
                             {/* Placeholder for standard vector illustration or similar if no 3D image */}
-                            {/* Assuming user might want an image here. Using a nice placeholder or clean design with abstract shapes if real image not available. */}
-                            {/* For now, using a stylized circle container with the logo or simply leaving space for a 'lab image' as requested */}
                             <div className="position-relative z-1 d-inline-block">
                                 <div style={{
                                     width: '100%',
-                                    maxWidth: '500px',
+                                    maxWidth: '450px', // Slightly reduced max-width
                                     aspectRatio: '1/1',
                                     background: 'radial-gradient(circle, #ffffff 0%, #e0f2fe 100%)',
                                     borderRadius: '50%',
@@ -125,11 +130,11 @@ const Hero = () => {
                                     />
                                 </div>
 
-                                {/* Floating Card Animation */}
+                                {/* Floating Card Animation - Hide on very small screens to avoid clutter */}
                                 <motion.div
                                     animate={{ y: [0, -15, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    className="position-absolute bg-white p-3 rounded-4 shadow-lg"
+                                    className="position-absolute bg-white p-3 rounded-4 shadow-lg d-none d-sm-block bs-card-float"
                                     style={{ bottom: '10%', left: '0', maxWidth: '180px' }}
                                 >
                                     <div className="d-flex align-items-center gap-2 mb-2">

@@ -48,7 +48,7 @@ const PageHeader = () => {
     const { title, description } = pageDetails[path];
 
     return (
-        <div className="page-header position-relative overflow-hidden" style={{ marginTop: '7%' }}>
+        <div className="page-header position-relative overflow-hidden page-header-spacing">
             {/* Background with overlay */}
             <div
                 className="position-absolute top-0 start-0 w-100 h-100"

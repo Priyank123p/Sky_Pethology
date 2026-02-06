@@ -43,7 +43,7 @@ const PromoSection = () => {
         <section className="py-5" style={{ overflow: 'hidden' }}>
             <Container>
                 <div
-                    className="rounded-5 overflow-hidden position-relative pt-4 px-4 pb-0 pt-md-5 px-md-5"
+                    className="rounded-5 overflow-hidden position-relative pt-4 px-3 pb-0 pt-md-5 px-md-5" // Reduced mobile padding
                     style={{
                         background: 'linear-gradient(135deg, #4b1d68 0%, #a83258 40%, #e87b28 100%)',
                         color: 'white',
@@ -62,7 +62,7 @@ const PromoSection = () => {
                     ></div>
 
                     <Row className="align-items-end position-relative z-1">
-                        <Col lg={7} className="mb-5 align-self-center">
+                        <Col lg={7} className="mb-4 mb-lg-5 align-self-center text-center text-lg-start"> {/* Center text on mobile */}
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -70,11 +70,11 @@ const PromoSection = () => {
                                 transition={{ duration: 0.6 }}
                             >
                                 <h2 className="display-5 fw-bold mb-3">Sky Pathology For You</h2>
-                                <p className="mb-4 lead text-white-50" style={{ maxWidth: '600px' }}>
+                                <p className="mb-4 lead text-white-50 mx-auto mx-lg-0" style={{ maxWidth: '600px' }}>
                                     Sky Pathology as your trusted partner in total health checkup, offering quick access to lab reports, easy prescription uploads, and prompt support when you need it.
                                 </p>
 
-                                <div className="d-flex flex-column gap-3" style={{ maxWidth: '400px' }}>
+                                <div className="d-flex flex-column gap-3 mx-auto mx-lg-0" style={{ maxWidth: '400px' }}>
                                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                         <Button
                                             variant="light"
@@ -101,7 +101,7 @@ const PromoSection = () => {
                             </motion.div>
                         </Col>
 
-                        <Col lg={5} className="text-center">
+                        <Col lg={5} className="text-center mt-4 mt-lg-0"> {/* Added top margin for mobile */}
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -115,6 +115,8 @@ const PromoSection = () => {
                                         className="img-fluid position-relative z-2"
                                         style={{
                                             maxHeight: '450px',
+                                            width: 'auto',
+                                            maxWidth: '100%',
                                             filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.2))',
                                             marginBottom: '-10px' // Slight negative margin to seal any gap
                                         }}

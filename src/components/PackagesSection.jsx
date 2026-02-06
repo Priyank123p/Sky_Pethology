@@ -43,7 +43,7 @@ const PackagesSection = () => {
             <Container>
                 <Row>
                     {packagesData.map((pkg, index) => (
-                        <Col key={pkg.id} lg={3} md={6} sm={12} className="mb-4">
+                        <Col key={pkg.id} lg={3} md={6} xs={12} className="mb-4">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
