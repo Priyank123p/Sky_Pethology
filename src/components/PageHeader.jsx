@@ -27,10 +27,15 @@ const PageHeader = () => {
         }
     };
 
+    // Responsive particle count
+    const particleCount = useMemo(() => {
+        return window.innerWidth < 768 ? 30 : 80; // Reduced from 140
+    }, []);
+
     // Generate random particles
-    // Memoize to prevent re-generation on every render (though they are random, we want them consistent while viewing)
+    // Memoize to prevent re-generation on every render
     const particles = useMemo(() => {
-        return Array.from({ length: 140 }).map((_, i) => ({
+        return Array.from({ length: particleCount }).map((_, i) => ({
             id: i,
             x: Math.random() * 100,
             y: Math.random() * 100,
@@ -38,7 +43,7 @@ const PageHeader = () => {
             duration: Math.random() * 3 + 2,
             delay: Math.random() * 5,
         }));
-    }, []);
+    }, [particleCount]);
 
     // Don't render on Home page or if path not found
     if (path === '/' || !pageDetails[path]) {
@@ -86,8 +91,10 @@ const PageHeader = () => {
                             width: `${p.size}px`,
                             height: `${p.size}px`,
                             backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                            boxShadow: `0 0 ${p.size * 2}px rgba(255, 255, 255, 0.5)`,
+                            // Removed expensive box-shadow for performance
+                            // boxShadow: `0 0 ${p.size * 2}px rgba(255, 255, 255, 0.5)`, 
                             borderRadius: '50%',
+                            willChange: 'transform, opacity' // Hint to browser for optimization
                         }}
                     />
                 ))}
