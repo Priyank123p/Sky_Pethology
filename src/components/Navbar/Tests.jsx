@@ -186,9 +186,9 @@ const Tests = () => {
 
     return (
         <div className="fade-in bg-light" style={{ minHeight: '100vh', paddingTop: '100px' }}>
-            <Container className="py-5">
+            <Container className="py-2">
                 <div className="text-center mb-5">
-                    <Badge bg="primary-blue" className="mb-2 px-3 py-2 rounded-pill bg-opacity-10 text-primary border border-primary">Our Diagnostic Services</Badge>
+                    <Badge bg="primary-blue" className="mb-2 px-3 py-2 rounded-pill bg-opacity-10 text-white border border-primary">Our Diagnostic Services</Badge>
                     <h2 className="fw-bold display-6" style={{ color: '#2c3e50' }}>Lab Tests & Packages</h2>
                     <p className="text-muted mx-auto" style={{ maxWidth: '600px' }}>
                         Choose from our wide range of diagnostic tests. High-quality services at affordable prices.
