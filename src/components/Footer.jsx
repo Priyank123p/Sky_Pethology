@@ -27,9 +27,6 @@ const Footer = () => {
                         <ul className="list-unstyled">
                             <li className="mb-3">
                                 <a
-                                    href="https://www.google.com/maps/search/?api=1&query=Shop+No.+201,+Second+Floor,+Elite+Green,+Opp.+Vandematram+Arcade,+New+SG+Road,+Gota.Ahemdabad+-382481"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                     className="d-flex gap-3 align-items-start text-decoration-none footer-link-item"
                                 >
                                     <MapPin className="text-primary-blue flex-shrink-0 mt-1" size={20} />
@@ -65,7 +62,7 @@ const Footer = () => {
                         <h6 className="footer-heading mb-4 text-uppercase">Locate Us</h6>
                         <div className="rounded-3 overflow-hidden map-container">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1044.5420328108273!2d72.5460618717615!3d23.095399673820307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e830008055d75%3A0xc5322677cd1c4ae!2sElite%20Greens!5e1!3m2!1sen!2sin!4v1770355227627!5m2!1sen!2sin"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d430.80112323536093!2d72.5466783377712!3d23.09528060064428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8335cc894419%3A0x812966ae73666447!2sNew%20Sky%20Pathology%20Laboratory%20Gota!5e1!3m2!1sen!2sin!4v1770611295206!5m2!1sen!2sin"
                                 width="100%"
                                 height="200"
                                 style={{ border: 0 }}
