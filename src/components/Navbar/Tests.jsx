@@ -98,7 +98,7 @@ const TestCard = ({ test }) => {
                                 e.currentTarget.style.boxShadow = 'none';
                             }}
                         >
-                            Book Now
+                            Add Now
                         </Button>
                     </div>
                 </Card.Body>
@@ -124,7 +124,7 @@ const TestCard = ({ test }) => {
                             className="rounded-pill px-4"
                             style={{ backgroundColor: '#483D8B', borderColor: '#483D8B' }}
                         >
-                            Book This Test
+                            Add This Test
                         </Button>
                     </div>
 
