@@ -8,6 +8,9 @@ const tests = [
     { name: 'ESR 2 HOUR', parameters: '1 Parameter', price: 100 },
     { name: 'LIPID PROFILE', parameters: '8 Parameters', price: 700 },
     { name: 'CHOLESTEROL', parameters: '1 Parameter', price: 250 },
+    { name: 'CHOLESTEROL', parameters: '1 Parameter', price: 250 },
+    { name: 'CHOLESTEROL', parameters: '1 Parameter', price: 250 },
+    { name: 'CHOLESTEROL', parameters: '1 Parameter', price: 250 },
 ];
 
 const PopularTests = () => {

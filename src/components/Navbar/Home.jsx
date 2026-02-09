@@ -3,7 +3,6 @@ import Hero from '../Hero';
 import PromoSection from '../PromoSection';
 import TrustSection from '../TrustSection';
 import WhyChooseUs from '../WhyChooseUs';
-import TestCategories from '../TestCategories';
 import Footer from '../Footer';
 import PackagesSection from '../PackagesSection';
 
@@ -18,7 +17,6 @@ const Home = () => {
             <PopularTests />
             <PromoSection />
             <PackagesSection />
-            <TestCategories />
             <Footer />
         </div>
     );
