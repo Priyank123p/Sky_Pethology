@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Card, Dropdown } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Form, Button, Card, Badge } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CalendarCheck, Send } from 'lucide-react';
+import { CalendarCheck, Send, X } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 const AppointmentForm = () => {
     const [validated, setValidated] = useState(false);
     const [selectedTests, setSelectedTests] = useState([]);
 
-    const tests = [
-        "Full Body Checkup", "Blood Test", "Thyroid Profile",
-        "Diabetes Screening", "Vitamin D Test", "Cholesterol Test", "Other"
-    ];
-
-    const handleTestSelection = (test) => {
-        if (selectedTests.includes(test)) {
-            setSelectedTests(selectedTests.filter(t => t !== test));
-        } else {
-            setSelectedTests([...selectedTests, test]);
+    useEffect(() => {
+        const storedTests = JSON.parse(localStorage.getItem('marketing_selected_tests') || '[]');
+        if (storedTests.length > 0) {
+            setSelectedTests(storedTests);
         }
+    }, []);
+
+
+
+    const removeTest = (testToRemove) => {
+        const updatedTests = selectedTests.filter(test => test !== testToRemove);
+        setSelectedTests(updatedTests);
+        localStorage.setItem('marketing_selected_tests', JSON.stringify(updatedTests));
     };
 
     const handleSubmit = (event) => {
@@ -40,6 +43,7 @@ const AppointmentForm = () => {
                 }
             });
             setSelectedTests([]); // Reset
+            localStorage.removeItem('marketing_selected_tests'); // Clear storage
             form.reset();
             setValidated(false);
         }
@@ -85,32 +89,40 @@ const AppointmentForm = () => {
                                             <Col md={12}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Test Type</Form.Label>
-                                                    <Dropdown autoClose="outside" className="d-block">
-                                                        <Dropdown.Toggle
-                                                            variant="light"
-                                                            className={`w-100 text-start border-0 py-3 d-flex align-items-center justify-content-between ${validated && selectedTests.length === 0 ? 'is-invalid border border-danger' : ''}`}
-                                                            style={{ backgroundColor: 'var(--bs-light)' }}
-                                                        >
-                                                            <span className={selectedTests.length === 0 ? 'text-muted' : ''}>
-                                                                {selectedTests.length > 0 ? selectedTests.join(', ') : 'Select a Test...'}
-                                                            </span>
-                                                        </Dropdown.Toggle>
-                                                        <Dropdown.Menu className="w-100 border-0 shadow-sm" style={{ maxHeight: '300px', overflowY: 'auto' }}>
-                                                            {tests.map((test) => (
-                                                                <Dropdown.Item as="div" key={test} onClick={(e) => e.stopPropagation()}>
-                                                                    <Form.Check
-                                                                        type="checkbox"
-                                                                        id={`check-${test}`}
-                                                                        label={test}
-                                                                        checked={selectedTests.includes(test)}
-                                                                        onChange={() => handleTestSelection(test)}
-                                                                    />
-                                                                </Dropdown.Item>
-                                                            ))}
-                                                        </Dropdown.Menu>
-                                                    </Dropdown>
+                                                    <div className="p-3 bg-light rounded-3">
+                                                        {selectedTests.length > 0 ? (
+                                                            <div className="d-flex flex-wrap gap-2 mb-2">
+                                                                {selectedTests.map((test, index) => (
+                                                                    <Badge
+                                                                        key={index}
+                                                                        bg="primary"
+                                                                        className="d-flex align-items-center gap-2 py-2 px-3 rounded-pill fw-normal shadow-sm"
+                                                                        style={{ fontSize: '0.9rem', backgroundColor: '#0077b6' }}
+                                                                    >
+                                                                        {test}
+                                                                        <X
+                                                                            size={16}
+                                                                            className="cursor-pointer hover-scale"
+                                                                            onClick={(e) => {
+                                                                                e.stopPropagation();
+                                                                                removeTest(test);
+                                                                            }}
+                                                                        />
+                                                                    </Badge>
+                                                                ))}
+                                                            </div>
+                                                        ) : (
+                                                            <div className="text-muted small fst-italic mb-2">
+                                                                No tests selected. Please add tests from the Tests page.
+                                                            </div>
+                                                        )}
+
+                                                        <Link to="/tests" className="text-decoration-none small fw-bold text-primary">
+                                                            + Add More Tests
+                                                        </Link>
+                                                    </div>
                                                     {validated && selectedTests.length === 0 && (
-                                                        <div className="text-danger small mt-1">Please select at least one test.</div>
+                                                        <div className="text-danger small mt-1">Please add at least one test to proceed.</div>
                                                     )}
                                                 </Form.Group>
                                             </Col>

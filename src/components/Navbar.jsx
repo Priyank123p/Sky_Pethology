@@ -53,7 +53,7 @@ const Navigation = () => {
                     <div className="d-flex flex-column flex-lg-row gap-2 mt-3 mt-lg-0">
                         <Button
                             as={Link}
-                            to="/contact"
+                            to="/bookappointment"
                             onClick={closeMenu}
                             className="d-flex align-items-center justify-content-center gap-2 rounded-pill px-4 border-0 py-2"
                             style={{ backgroundColor: 'var(--primary-blue)' }}

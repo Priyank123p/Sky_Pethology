@@ -24,6 +24,10 @@ const PageHeader = () => {
         '/contact': {
             title: 'Contact Us',
             description: 'Get in touch with us for appointments, queries, or home collection.'
+        },
+        '/bookappointment': {
+            title: 'Book Appointment',
+            description: 'Get in touch with us for appointments or home collection.'
         }
     };
 

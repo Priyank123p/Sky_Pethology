@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
+import Swal from 'sweetalert2';
 import { Container, Row, Col, Card, Button, Spinner, Alert, Modal, ListGroup, Badge } from 'react-bootstrap';
 import { CheckCircle, Info } from 'lucide-react';
 import Footer from '../Footer';
@@ -11,6 +12,49 @@ const TestCard = ({ test }) => {
 
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
+
+    const handleAddTest = () => {
+        // Get existing tests
+        const existingTests = JSON.parse(localStorage.getItem('marketing_selected_tests') || '[]');
+        const testName = test['test-name'];
+
+        // Check for duplicates
+        if (!existingTests.includes(testName)) {
+            existingTests.push(testName);
+            localStorage.setItem('marketing_selected_tests', JSON.stringify(existingTests));
+
+            // Success Toast
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Test added successfully'
+            });
+        } else {
+            // Info Toast for duplicate
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+            });
+
+            Toast.fire({
+                icon: 'info',
+                title: 'Test already added'
+            });
+        }
+    };
 
     // Parse parameters: split by comma if available, otherwise empty array
     const parameters = test['parameter']
@@ -83,6 +127,7 @@ const TestCard = ({ test }) => {
 
                         <Button
                             className="w-100 fw-bold py-2 border-0"
+                            onClick={handleAddTest}
                             style={{
                                 background: 'linear-gradient(90deg, #483D8B, #6A5ACD)',
                                 borderRadius: '10px',

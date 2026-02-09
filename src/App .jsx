@@ -15,6 +15,7 @@ import Packages from './components/Navbar/Packages';
 import Contact from './components/Navbar/Contact';
 import PageHeader from './components/PageHeader';
 import FloatingCTA from './components/FloatingCTA';
+import AppointmentForm from './components/AppointmentForm';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,6 +35,7 @@ function App() {
             <Route path="/tests" element={<Tests />} />
             <Route path="/packages" element={<Packages />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/bookappointment" element={<AppointmentForm />} />
           </Routes>
           <FloatingCTA />
         </div>
