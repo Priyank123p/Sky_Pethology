@@ -8,23 +8,22 @@ const tests = [
     { name: 'ESR 2 HOUR', parameters: '1 Parameter', price: 100 },
     { name: 'LIPID PROFILE', parameters: '8 Parameters', price: 700 },
     { name: 'CHOLESTEROL', parameters: '1 Parameter', price: 250 },
-    { name: 'CHOLESTEROL', parameters: '1 Parameter', price: 250 },
-    { name: 'CHOLESTEROL', parameters: '1 Parameter', price: 250 },
-    { name: 'CHOLESTEROL', parameters: '1 Parameter', price: 250 },
+    { name: 'HAEMOGLOBIN-HB', parameters: '1 Parameter', price: 100 },
+    { name: 'HBA1C/GLYCOCYLATED-HbA1c', parameters: '1 Parameter', price: 600 },
+    { name: 'CRP (C-REACTIVE PROTEIN)-QUANTITATIVE-CRP', parameters: '1 Parameter', price: 500 },
 ];
 
 const PopularTests = () => {
     return (
         <section className="py-5 bg-white">
             <Container>
-                {/* Title Section - No View All Button */}
                 <div className="mb-4">
                     <h2 className="fw-bold text-dark">Popular Blood Tests</h2>
                 </div>
 
                 <Row className="g-4">
                     {tests.map((test, index) => (
-                        <Col key={index} xs={12} sm={6} md={4} lg={3}> {/* Adjusted grid for responsiveness */}
+                        <Col key={index} xs={12} sm={6} md={4} lg={3}>
                             <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                                 <Card className="border-0 shadow-sm h-100 rounded-4" style={{ backgroundColor: '#f9f9f9' }}>
                                     <Card.Body className="p-4 d-flex flex-column h-100">

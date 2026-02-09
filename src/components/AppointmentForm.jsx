@@ -116,6 +116,12 @@ const AppointmentForm = () => {
                                             </Col>
                                             <Col md={12}>
                                                 <Form.Group>
+                                                    <Form.Label className="small fw-bold text-secondary">Address</Form.Label>
+                                                    <Form.Control as="textarea" rows={3} placeholder="Address" className="bg-light border-0 py-3" />
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={12}>
+                                                <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Message (Optional)</Form.Label>
                                                     <Form.Control as="textarea" rows={3} placeholder="Any specific requirements?" className="bg-light border-0 py-3" />
                                                 </Form.Group>
