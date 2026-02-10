@@ -60,7 +60,7 @@ const Hero = () => {
                                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-100 w-sm-auto">
                                     <Button
                                         as="a"
-                                        href="/contact"
+                                        href="/bookappointment"
                                         size="lg"
                                         className="border-0 rounded-pill px-4 py-3 d-flex align-items-center justify-content-center gap-2 shadow w-100"
                                         style={{ backgroundColor: 'var(--primary-blue)' }}
