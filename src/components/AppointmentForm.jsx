@@ -82,8 +82,25 @@ const AppointmentForm = () => {
                                             </Col>
                                             <Col md={6}>
                                                 <Form.Group>
+                                                    <Form.Label className="small fw-bold text-secondary">Gender</Form.Label>
+                                                    <Form.Select required className="bg-light border-0 py-3">
+                                                        <option value="">Select Gender</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Other">Other</option>
+                                                    </Form.Select>
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={6}>
+                                                <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Preferred Date</Form.Label>
                                                     <Form.Control required type="date" className="bg-light border-0 py-3" />
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={6}>
+                                                <Form.Group>
+                                                    <Form.Label className="small fw-bold text-secondary">Preferred Time</Form.Label>
+                                                    <Form.Control required type="time" className="bg-light border-0 py-3" />
                                                 </Form.Group>
                                             </Col>
                                             <Col md={12}>
