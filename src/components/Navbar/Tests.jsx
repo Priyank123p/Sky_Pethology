@@ -163,14 +163,6 @@ const TestCard = ({ test }) => {
                             <span className="text-muted d-block small text-uppercase fw-bold">Total Price</span>
                             <h3 className="fw-bold text-primary mb-0">₹{test['price']}</h3>
                         </div>
-                        <Button
-                            size="sm"
-                            variant="primary"
-                            className="rounded-pill px-4"
-                            style={{ backgroundColor: '#483D8B', borderColor: '#483D8B' }}
-                        >
-                            Add This Test
-                        </Button>
                     </div>
 
                     <h6 className="fw-bold text-secondary mb-3 border-bottom pb-2">
