@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import Swal from 'sweetalert2';
 import { Container, Row, Col, Card, Button, Spinner, Alert, Modal, ListGroup, Badge } from 'react-bootstrap';
-import { CheckCircle, Info } from 'lucide-react';
+import { CheckCircle, Info, Search } from 'lucide-react';
 import Footer from '../Footer';
 
 const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTpp_JYAhwwCsxMQYtS533OO-Mq_y9yxSeHwhHgQ-C0fgNe9cJHw3kRVjxVg-2JlRgZOwPxi1P6xtpt/pub?gid=0&single=true&output=csv';
@@ -193,6 +193,7 @@ const Tests = () => {
     const [tests, setTests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         const fetchTests = async () => {
@@ -249,13 +250,39 @@ const Tests = () => {
                 )}
 
                 {!loading && !error && (
-                    <Row xs={1} md={2} lg={3} xl={4} className="g-4">
-                        {tests.map((test, index) => (
-                            <Col key={index}>
-                                <TestCard test={test} />
-                            </Col>
-                        ))}
-                    </Row>
+                    <>
+                        {/* Search Bar */}
+                        <div className="mb-5 position-relative mx-auto" style={{ maxWidth: '600px' }}>
+                            <div className="position-absolute top-50 start-0 translate-middle-y ps-3 text-muted">
+                                <Search size={20} />
+                            </div>
+                            <input
+                                type="text"
+                                className="form-control rounded-pill py-3 ps-5 border-0 shadow-sm"
+                                placeholder="Search for tests (e.g., Blood Count, Thyroid...)"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                style={{ fontSize: '1.05rem', backgroundColor: '#fff' }}
+                            />
+                        </div>
+
+                        <Row xs={1} md={2} lg={3} xl={4} className="g-4">
+                            {tests.filter(test =>
+                                test['test-name'].toLowerCase().includes(searchTerm.toLowerCase())
+                            ).map((test, index) => (
+                                <Col key={index}>
+                                    <TestCard test={test} />
+                                </Col>
+                            ))}
+                        </Row>
+
+                        {tests.filter(test => test['test-name'].toLowerCase().includes(searchTerm.toLowerCase())).length === 0 && (
+                            <div className="text-center mt-5 py-5 bg-white rounded-3 shadow-sm">
+                                <h5 className="text-muted">No tests found matching "{searchTerm}"</h5>
+                                <p className="small text-muted">Try simpler keywords or check spelling.</p>
+                            </div>
+                        )}
+                    </>
                 )}
 
                 {!loading && !error && tests.length === 0 && (
