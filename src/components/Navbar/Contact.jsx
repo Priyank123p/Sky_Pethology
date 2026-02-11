@@ -19,13 +19,12 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Premium Alert UI
         Swal.fire({
             title: 'Thank You!',
             text: 'Your inquiry has been received. We will contact you shortly.',
             icon: 'success',
             confirmButtonText: 'Great!',
-            confirmButtonColor: '#0077b6', // --primary-blue
+            confirmButtonColor: '#0077b6',
             background: '#ffffff',
             backdrop: `
                 rgba(0,0,123,0.1)
@@ -61,7 +60,6 @@ const Contact = () => {
                     <h1 className="display-4 fw-bold mb-3">Get in Touch</h1>
                     <p className="lead opacity-75 mb-0">We'd love to hear from you. Send us a message!</p>
                 </div>
-                {/* Decorative background circle */}
                 <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10"
                     style={{ background: 'radial-gradient(circle at top right, #fff 0%, transparent 60%)' }}>
                 </div>
@@ -81,7 +79,6 @@ const Contact = () => {
 
                                 <form onSubmit={handleSubmit}>
                                     <div className="row g-4">
-                                        {/* Name Field */}
                                         <div className="col-md-6">
                                             <div className="form-floating">
                                                 <input
@@ -101,7 +98,6 @@ const Contact = () => {
                                             </div>
                                         </div>
 
-                                        {/* Email Field */}
                                         <div className="col-md-6">
                                             <div className="form-floating">
                                                 <input
@@ -121,7 +117,6 @@ const Contact = () => {
                                             </div>
                                         </div>
 
-                                        {/* Phone Field */}
                                         <div className="col-md-6">
                                             <div className="form-floating">
                                                 <input
@@ -141,7 +136,6 @@ const Contact = () => {
                                             </div>
                                         </div>
 
-                                        {/* Subject Field */}
                                         <div className="col-md-6">
                                             <div className="form-floating">
                                                 <input
@@ -161,7 +155,6 @@ const Contact = () => {
                                             </div>
                                         </div>
 
-                                        {/* Message Field */}
                                         <div className="col-12">
                                             <div className="form-floating">
                                                 <textarea
@@ -180,7 +173,6 @@ const Contact = () => {
                                             </div>
                                         </div>
 
-                                        {/* Submit Button */}
                                         <div className="col-12 text-center mt-4">
                                             <button
                                                 type="submit"

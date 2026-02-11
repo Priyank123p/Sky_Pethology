@@ -17,7 +17,6 @@ const PromoSection = () => {
         e.preventDefault();
         handleClose();
 
-        // "Best UI Alert" using SweetAlert2
         Swal.fire({
             title: 'Request Submitted!',
             text: 'We have received your request. Our team will call you back shortly.',
@@ -43,7 +42,7 @@ const PromoSection = () => {
         <section className="py-5" style={{ overflow: 'hidden' }}>
             <Container>
                 <div
-                    className="rounded-5 overflow-hidden position-relative pt-4 px-3 pb-0 pt-md-5 px-md-5" // Reduced mobile padding
+                    className="rounded-5 overflow-hidden position-relative pt-4 px-3 pb-0 pt-md-5 px-md-5" // 
                     style={{
                         background: 'linear-gradient(135deg, #4b1d68 0%, #a83258 40%, #e87b28 100%)',
                         color: 'white',
@@ -62,7 +61,7 @@ const PromoSection = () => {
                     ></div>
 
                     <Row className="align-items-end position-relative z-1">
-                        <Col lg={7} className="mb-4 mb-lg-5 align-self-center text-center text-lg-start"> {/* Center text on mobile */}
+                        <Col lg={7} className="mb-4 mb-lg-5 align-self-center text-center text-lg-start">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -101,7 +100,7 @@ const PromoSection = () => {
                             </motion.div>
                         </Col>
 
-                        <Col lg={5} className="text-center mt-4 mt-lg-0"> {/* Added top margin for mobile */}
+                        <Col lg={5} className="text-center mt-4 mt-lg-0">
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +117,7 @@ const PromoSection = () => {
                                             width: 'auto',
                                             maxWidth: '100%',
                                             filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.2))',
-                                            marginBottom: '-10px' // Slight negative margin to seal any gap
+                                            marginBottom: '-10px'
                                         }}
                                         onError={(e) => {
                                             e.target.onerror = null;

@@ -9,7 +9,7 @@ const Preloader = ({ onComplete }) => {
         const timer = setTimeout(() => {
             setShow(false);
             if (onComplete) onComplete();
-        }, 2800); // 2 seconds animation + exit
+        }, 2800);
 
         return () => clearTimeout(timer);
     }, [onComplete]);

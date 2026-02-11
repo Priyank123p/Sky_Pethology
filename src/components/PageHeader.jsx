@@ -7,7 +7,6 @@ const PageHeader = () => {
     const location = useLocation();
     const path = location.pathname;
 
-    // Configuration for each page
     const pageDetails = {
         '/about': {
             title: 'About Us',
@@ -31,13 +30,10 @@ const PageHeader = () => {
         }
     };
 
-    // Responsive particle count
     const particleCount = useMemo(() => {
-        return window.innerWidth < 768 ? 30 : 80; // Reduced from 140
+        return window.innerWidth < 768 ? 30 : 80;
     }, []);
 
-    // Generate random particles
-    // Memoize to prevent re-generation on every render
     const particles = useMemo(() => {
         return Array.from({ length: particleCount }).map((_, i) => ({
             id: i,
@@ -49,7 +45,6 @@ const PageHeader = () => {
         }));
     }, [particleCount]);
 
-    // Don't render on Home page or if path not found
     if (path === '/' || !pageDetails[path]) {
         return null;
     }
@@ -58,7 +53,6 @@ const PageHeader = () => {
 
     return (
         <div className="page-header position-relative overflow-hidden page-header-spacing">
-            {/* Background with overlay */}
             <div
                 className="position-absolute top-0 start-0 w-100 h-100"
                 style={{
@@ -67,7 +61,6 @@ const PageHeader = () => {
                 }}
             ></div>
 
-            {/* Application of Particles */}
             <div className="position-absolute top-0 start-0 w-100 h-100" style={{ zIndex: -1, pointerEvents: 'none' }}>
                 {particles.map((p) => (
                     <motion.div
@@ -79,8 +72,8 @@ const PageHeader = () => {
                             scale: 0.5
                         }}
                         animate={{
-                            y: [0, -20, 0], // Float up and down slowly
-                            x: [0, 15, 0],  // Drift sideways
+                            y: [0, -20, 0],
+                            x: [0, 15, 0],
                             opacity: [0.1, 0.4, 0.1],
                             scale: [1, 1.2, 1]
                         }}
@@ -95,10 +88,8 @@ const PageHeader = () => {
                             width: `${p.size}px`,
                             height: `${p.size}px`,
                             backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                            // Removed expensive box-shadow for performance
-                            // boxShadow: `0 0 ${p.size * 2}px rgba(255, 255, 255, 0.5)`, 
                             borderRadius: '50%',
-                            willChange: 'transform, opacity' // Hint to browser for optimization
+                            willChange: 'transform, opacity'
                         }}
                     />
                 ))}
@@ -112,7 +103,6 @@ const PageHeader = () => {
                     {description}
                 </p>
 
-                {/* Decorative Element */}
                 <div
                     className="mx-auto mt-4"
                     style={{

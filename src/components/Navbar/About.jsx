@@ -8,11 +8,8 @@ const About = () => {
     return (
         <div className="pt-5" style={{ backgroundColor: '#f8fafc', overflowX: 'hidden' }}>
             <Container className="py-5">
-                {/* Main About Section */}
                 <Row className="align-items-center mb-5 g-5">
-                    {/* Left Side - Image */}
                     <Col lg={6}>
-                        {/* Simple Image Render */}
                         <div className="p-2 bg-white rounded-4 shadow-sm">
                             <img
                                 src={labImage}

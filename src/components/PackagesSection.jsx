@@ -14,16 +14,13 @@ const PackageCard = ({ data, index }) => {
     const handleShow = () => setShowModal(true);
 
     const handleAddPackage = () => {
-        // Get existing tests/packages
         const existingItems = JSON.parse(localStorage.getItem('marketing_selected_tests') || '[]');
         const packageName = data['Packages-Name'];
 
-        // Check for duplicates
         if (!existingItems.includes(packageName)) {
             existingItems.push(packageName);
             localStorage.setItem('marketing_selected_tests', JSON.stringify(existingItems));
 
-            // Success Toast
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -41,7 +38,6 @@ const PackageCard = ({ data, index }) => {
                 title: 'Package added successfully'
             });
         } else {
-            // Info Toast for duplicate
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -56,7 +52,6 @@ const PackageCard = ({ data, index }) => {
         }
     };
 
-    // Calculate Prices
     const originalPrice = parseFloat(data['Price']) || 0;
     const discountPercent = parseFloat(data['Discount']?.replace('%', '')) || 0;
     const hasDiscount = discountPercent > 0;
@@ -65,7 +60,6 @@ const PackageCard = ({ data, index }) => {
         ? Math.round(originalPrice - (originalPrice * discountPercent / 100))
         : originalPrice;
 
-    // Split Test-Name by comma if it contains multiple tests, for better display in modal
     const testList = data['Test-Name'] ? data['Test-Name'].split(',').map(t => t.trim()).filter(t => t) : [];
 
     return (
@@ -86,7 +80,7 @@ const PackageCard = ({ data, index }) => {
                             style={{ height: '180px', objectFit: 'cover' }}
                             onError={(e) => {
                                 e.target.onerror = null;
-                                e.target.src = 'https://via.placeholder.com/400x180?text=Sky+Pathology'; // Fallback image
+                                e.target.src = 'https://via.placeholder.com/400x180?text=Sky+Pathology';
                             }}
                         />
                         <div
@@ -94,7 +88,7 @@ const PackageCard = ({ data, index }) => {
                             style={{
                                 bottom: '10px',
                                 right: '0',
-                                backgroundColor: '#F37021', // Orange brand color
+                                backgroundColor: '#F37021',
                                 color: 'white',
                                 padding: '5px 15px',
                                 borderRadius: '20px 0 0 20px',
@@ -261,7 +255,6 @@ const PackagesSection = () => {
                 download: true,
                 header: true,
                 complete: (results) => {
-                    // Filter valid data and limit to 4
                     const validData = results.data
                         .filter(pkg => pkg['Id'] && pkg['Packages-Name'])
                         .slice(0, 4);

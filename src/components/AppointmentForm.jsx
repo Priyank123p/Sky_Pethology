@@ -35,15 +35,15 @@ const AppointmentForm = () => {
                 title: "Success!",
                 text: "Request received! We will call you shortly.",
                 icon: "success",
-                confirmButtonColor: "#d4af37", // approximate gold color
+                confirmButtonColor: "#d4af37",
                 background: "#ffffff",
                 customClass: {
                     title: 'fw-bold',
                     popup: 'rounded-4'
                 }
             });
-            setSelectedTests([]); // Reset
-            localStorage.removeItem('marketing_selected_tests'); // Clear storage
+            setSelectedTests([]);
+            localStorage.removeItem('marketing_selected_tests');
             form.reset();
             setValidated(false);
         }

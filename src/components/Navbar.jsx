@@ -6,7 +6,7 @@ import logo from '../assets/Petho_Logo.png';
 
 const Navigation = () => {
     const [scrolled, setScrolled] = useState(false);
-    const [expanded, setExpanded] = useState(false); // Track menu state
+    const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -16,7 +16,6 @@ const Navigation = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close menu when a link is clicked
     const closeMenu = () => setExpanded(false);
 
     return (

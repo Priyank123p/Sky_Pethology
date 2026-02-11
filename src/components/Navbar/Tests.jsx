@@ -23,7 +23,6 @@ const TestCard = ({ test }) => {
             existingTests.push(testName);
             localStorage.setItem('marketing_selected_tests', JSON.stringify(existingTests));
 
-            // Success Toast
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -41,7 +40,6 @@ const TestCard = ({ test }) => {
                 title: 'Test added successfully'
             });
         } else {
-            // Info Toast for duplicate
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -56,14 +54,12 @@ const TestCard = ({ test }) => {
         }
     };
 
-    // Parse parameters: split by comma if available, otherwise empty array
     const parameters = test['parameter']
         ? test['parameter'].split(',').map(p => p.trim()).filter(p => p)
         : [];
 
     const hasParameters = parameters.length > 0;
 
-    // Display first few parameters if there are many
     const displayParameters = parameters.slice(0, 3);
     const remainingCount = parameters.length - 3;
 

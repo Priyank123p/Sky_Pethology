@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 const FloatingCTA = () => {
     return (
         <div className="position-fixed bottom-0 end-0 p-4 d-flex flex-column gap-3" style={{ zIndex: 1000 }}>
-            {/* WhatsApp Button */}
             <motion.div
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -24,7 +23,6 @@ const FloatingCTA = () => {
                 </Button>
             </motion.div>
 
-            {/* Call Button */}
             <Button
                 className="rounded-circle d-flex align-items-center justify-content-center p-0 shadow-lg"
                 style={{ width: '50px', height: '50px', backgroundColor: 'var(--primary-blue)', border: 'none' }}

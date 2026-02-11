@@ -12,11 +12,10 @@ const Hero = () => {
                 minHeight: '100vh',
                 background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
                 overflow: 'hidden',
-                paddingTop: '100px', // Reduced from 120
+                paddingTop: '100px',
                 paddingBottom: '50px'
             }}
         >
-            {/* Decorative Blur - Hidden on mobile to improve performance/layout */}
             <div
                 className="position-absolute bg-primary-blue rounded-circle d-none d-lg-block"
                 style={{
@@ -32,14 +31,7 @@ const Hero = () => {
             ></div>
 
             <Container className="position-relative z-1">
-                <Row className="align-items-center flex-column-reverse flex-lg-row"> {/* Reverse column order on mobile: Text below image or standard stacking */}
-                    {/* Actually, usually Text first then Image is better on Desktop. On mobile, Image first then Text? Or Text then Image? 
-                       Bootstrap 'flex-column-reverse' on Row makes the *last* col appear *first*. 
-                       If we want Text (Co1 1) -> Image (Col 2) on Desktop, and Image (Col 2) -> Text (Col 1) on Mobile, we need flex-column-reverse. 
-                       But usually standard is fine: Text then Image. Let's stick to standard stacking: Text then Image.
-                       If we want Image top on mobile: use order classes. 
-                       Let's keep text on top for now as it's the H1.
-                    */}
+                <Row className="align-items-center flex-column-reverse flex-lg-row">
                     <Col lg={6} className="mb-5 mb-lg-0 text-center text-lg-start mt-4 mt-lg-0">
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
@@ -95,7 +87,7 @@ const Hero = () => {
                             <div className="position-relative z-1 d-inline-block">
                                 <div style={{
                                     width: '100%',
-                                    maxWidth: '450px', // Slightly reduced max-width
+                                    maxWidth: '450px',
                                     aspectRatio: '1/1',
                                     background: 'radial-gradient(circle, #ffffff 0%, #e0f2fe 100%)',
                                     borderRadius: '50%',
@@ -103,9 +95,8 @@ const Hero = () => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     boxShadow: '0 20px 50px rgba(14, 165, 198, 0.15)',
-                                    margin: '0 auto'  // Center on mobile
+                                    margin: '0 auto'
                                 }}>
-                                    {/* Visual representation - using Logo for now as placeholder for "Lab Image" or generic medical illustration */}
                                     <img src="https://img.freepik.com/free-vector/science-lab-concept-illustration_114360-1288.jpg?w=740&t=st=1706270000~exp=1706270600~hmac=placeholder"
                                         alt="Lab Services"
                                         className="img-fluid rounded-circle"
@@ -138,7 +129,6 @@ const Hero = () => {
     );
 };
 
-// Icon import helper
 import { Check } from 'lucide-react';
 
 export default Hero;
