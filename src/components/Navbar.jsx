@@ -29,16 +29,17 @@ const Navigation = () => {
             style={{ transition: 'all 0.3s ease-in-out' }}
         >
             <Container>
-                <Navbar.Brand href="#home" className="d-flex align-items-center">
-                    <img
-                        src={logo}
-                        alt="Sky Pathology Logo"
-                        className="d-inline-block align-top me-2"
-                        style={{ height: '50px', width: 'auto', objectFit: 'contain' }} // Reduced height for mobile by default, can use media query logic if needed but 50-60 is safer
-                    />
-                    {/* Optional: Add text if logo doesn't have it */}
-                    {/* <span className="fw-bold text-dark d-lg-none">Sky Patho</span> */}
-                </Navbar.Brand>
+                <Nav.Link as={Link} to="/">
+                    <Navbar.Brand className="d-flex align-items-center">
+                        <img
+                            src={logo}
+                            alt="Sky Pathology Logo"
+                            className="d-inline-block align-top me-2"
+                            style={{ height: '50px', width: 'auto', objectFit: 'contain' }}
+                        />
+                    </Navbar.Brand>
+                </Nav.Link>
+
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="border-0 shadow-none">
                     <span className="navbar-toggler-icon"></span>
                 </Navbar.Toggle>
