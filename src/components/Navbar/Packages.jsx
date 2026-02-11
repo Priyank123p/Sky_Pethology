@@ -157,11 +157,11 @@ const PackageCard = ({ data, index }) => {
                                     ₹ {finalPrice}
                                 </h3>
                             </div>
-                            <div className="d-grid gap-2">
+                            <div className="d-flex gap-2">
                                 <Button
                                     variant="primary"
                                     size="sm"
-                                    className="rounded-pill fw-bold d-flex align-items-center justify-content-center py-1"
+                                    className="rounded-pill fw-bold d-flex align-items-center justify-content-center py-1 flex-grow-1"
                                     onClick={handleAddPackage}
                                     style={{ background: 'linear-gradient(90deg, #4834d4, #686de0)', border: 'none', boxShadow: '0 2px 8px rgba(72, 52, 212, 0.2)' }}
                                 >
@@ -170,7 +170,7 @@ const PackageCard = ({ data, index }) => {
                                 <Button
                                     variant="outline-secondary"
                                     size="sm"
-                                    className="rounded-pill fw-bold d-flex align-items-center justify-content-center py-1 border-0 bg-light text-dark"
+                                    className="rounded-pill fw-bold d-flex align-items-center justify-content-center py-1 border-0 bg-light text-dark flex-grow-1"
                                     onClick={handleShow}
                                 >
                                     <Info size={16} className="me-2 text-muted" /> View Details
