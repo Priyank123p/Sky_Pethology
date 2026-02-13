@@ -183,7 +183,20 @@ const PromoSection = () => {
 
 
                         <div className="d-flex gap-3 justify-content-between mt-4">
-                            <Button variant="outline-primary" onClick={handleClose} className="w-50 rounded-pill py-3 fw-semibold" style={{ borderColor: '#4b1d68', color: '#4b1d68' }}>
+                            <Button
+                                variant="outline-primary"
+                                onClick={handleClose}
+                                className="w-50 rounded-pill py-3 fw-semibold"
+                                style={{ borderColor: '#4b1d68', color: '#4b1d68' }}
+                                onMouseEnter={(e) => {
+                                    e.target.style.backgroundColor = '#4b1d68';
+                                    e.target.style.color = 'white';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.target.style.backgroundColor = 'transparent';
+                                    e.target.style.color = '#4b1d68';
+                                }}
+                            >
                                 Cancel
                             </Button>
                             <Button type="submit" className="w-50 rounded-pill py-3 fw-semibold border-0" style={{ backgroundColor: '#4b1d68' }}>
