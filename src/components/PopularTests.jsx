@@ -219,7 +219,7 @@ const PopularTests = () => {
     }, []);
 
     return (
-        <section className="py-5 bg-white">
+        <section className="py-5">
             <Container>
                 <div className="mb-4">
                     <h2 className="fw-bold text-dark">Popular Blood Tests</h2>

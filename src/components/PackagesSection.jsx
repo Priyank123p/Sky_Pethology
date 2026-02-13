@@ -275,7 +275,7 @@ const PackagesSection = () => {
 
     if (loading) {
         return (
-            <section className="section-padding bg-light mt-5 text-center">
+            <section className="section-padding mt-5 text-center">
                 <Container>
                     <div className="text-center py-5">
                         <Spinner animation="border" variant="primary" style={{ width: '3rem', height: '3rem' }} />
@@ -288,7 +288,7 @@ const PackagesSection = () => {
 
     if (error) {
         return (
-            <section className="section-padding bg-light mt-5 text-center">
+            <section className="section-padding mt-5 text-center">
                 <Container>
                     <Alert variant="danger">{error}</Alert>
                 </Container>
@@ -297,7 +297,7 @@ const PackagesSection = () => {
     }
 
     return (
-        <section className="section-padding bg-light mt-5">
+        <section className="section-padding mt-5">
             <Container>
                 <Row>
                     {packages.map((pkg, index) => (

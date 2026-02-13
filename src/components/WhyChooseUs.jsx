@@ -40,7 +40,7 @@ const features = [
 
 const WhyChooseUs = () => {
     return (
-        <section className="py-5 overflow-hidden" style={{ backgroundColor: '#fff' }}>
+        <section className="py-5 overflow-hidden">
             <Container fluid className="p-0">
                 <div
                     className="position-relative py-5 ps-lg-5 pe-0"

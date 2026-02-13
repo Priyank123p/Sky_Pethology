@@ -1,4 +1,5 @@
 import React from 'react';
+import ParticlesBackground from '../ParticlesBackground';
 import Hero from '../Hero';
 import PromoSection from '../PromoSection';
 import TrustSection from '../TrustSection';
@@ -11,6 +12,7 @@ import PopularTests from '../PopularTests';
 const Home = () => {
     return (
         <div className="fade-in">
+            <ParticlesBackground />
             <Hero />
             <TrustSection />
             <WhyChooseUs />
