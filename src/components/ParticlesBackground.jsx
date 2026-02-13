@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const ParticlesBackground = () => {
     // Determine particle count based on screen width
     const particleCount = useMemo(() => {
-        return window.innerWidth < 768 ? 30 : 90;
+        return window.innerWidth < 768 ? 30 : 150;
     }, []);
 
     // Generate random particles with colors
