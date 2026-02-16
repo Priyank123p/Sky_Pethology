@@ -12,7 +12,7 @@ import PopularTests from '../PopularTests';
 const Home = () => {
     return (
         <div className="fade-in">
-            <ParticlesBackground />
+            {/* <ParticlesBackground /> */}
             <Hero />
             <TrustSection />
             <WhyChooseUs />
