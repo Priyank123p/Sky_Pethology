@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import { motion } from 'framer-motion';
+import dnaVideo from '../assets/141412-777708076_medium.mp4';
+
 
 const PageHeader = () => {
     const location = useLocation();
@@ -30,20 +31,7 @@ const PageHeader = () => {
         }
     };
 
-    const particleCount = useMemo(() => {
-        return window.innerWidth < 768 ? 30 : 80;
-    }, []);
 
-    const particles = useMemo(() => {
-        return Array.from({ length: particleCount }).map((_, i) => ({
-            id: i,
-            x: Math.random() * 100,
-            y: Math.random() * 100,
-            size: Math.random() * 7 + 6,
-            duration: Math.random() * 3 + 2,
-            delay: Math.random() * 5,
-        }));
-    }, [particleCount]);
 
     if (path === '/' || !pageDetails[path]) {
         return null;
@@ -52,48 +40,20 @@ const PageHeader = () => {
     const { title, description } = pageDetails[path];
 
     return (
-        <div className="page-header position-relative overflow-hidden page-header-spacing">
-            <div
+        <div className="page-header position-relative overflow-hidden page-header-spacing d-flex align-items-center justify-content-center" style={{ minHeight: '450px' }}>
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="position-absolute top-0 start-0 w-100 h-100"
-                style={{
-                    background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
-                    zIndex: -2
-                }}
-            ></div>
+                style={{ objectFit: 'cover', zIndex: -2 }}
+            >
+                <source src={dnaVideo} type="video/mp4" />
+            </video>
+            <div className="position-absolute top-0 start-0 w-100 h-100" style={{ backgroundColor: 'rgba(0, 0, 0, 0.86)', zIndex: -1 }}></div>
 
-            <div className="position-absolute top-0 start-0 w-100 h-100" style={{ zIndex: -1, pointerEvents: 'none' }}>
-                {particles.map((p) => (
-                    <motion.div
-                        key={p.id}
-                        initial={{
-                            left: `${p.x}%`,
-                            top: `${p.y}%`,
-                            opacity: 0,
-                            scale: 0.5
-                        }}
-                        animate={{
-                            y: [0, -20, 0],
-                            x: [0, 15, 0],
-                            opacity: [0.1, 0.4, 0.1],
-                            scale: [1, 1.2, 1]
-                        }}
-                        transition={{
-                            duration: p.duration,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: p.delay
-                        }}
-                        style={{
-                            position: 'absolute',
-                            width: `${p.size}px`,
-                            height: `${p.size}px`,
-                            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                            borderRadius: '50%',
-                            willChange: 'transform, opacity'
-                        }}
-                    />
-                ))}
-            </div>
+
 
             <Container className="py-5 text-center text-white position-relative" style={{ zIndex: 1 }}>
                 <h1 className="display-5 fw-bold mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -102,16 +62,6 @@ const PageHeader = () => {
                 <p className="lead opacity-75 mb-0" style={{ maxWidth: '600px', margin: '0 auto' }}>
                     {description}
                 </p>
-
-                <div
-                    className="mx-auto mt-4"
-                    style={{
-                        width: '60px',
-                        height: '4px',
-                        backgroundColor: 'var(--primary-blue, #0d6efd)',
-                        borderRadius: '2px'
-                    }}
-                ></div>
             </Container>
         </div>
     );
