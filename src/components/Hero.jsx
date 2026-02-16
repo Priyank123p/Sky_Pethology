@@ -1,36 +1,61 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Badge } from 'react-bootstrap';
 import { motion } from 'framer-motion';
-import { Calendar, MessageCircle } from 'lucide-react';
+import { Calendar, Activity, FlaskConical, Microscope, Dna, CheckCircle2 } from 'lucide-react';
+import modernLabImg from '../assets/modern_lab.png'; // Importing the lab image
 
 const Hero = () => {
     return (
         <section
             id="home"
-            className="position-relative d-flex align-items-center"
+            className="position-relative d-flex align-items-center overflow-hidden"
             style={{
                 minHeight: '100vh',
-                background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
-                overflow: 'hidden',
+                background: 'linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #dbeafe 100%)',
                 paddingTop: '100px',
                 paddingBottom: '50px'
             }}
         >
-            <div
-                className="position-absolute bg-primary-blue rounded-circle d-none d-lg-block"
-                style={{
-                    width: '500px',
-                    height: '500px',
-                    maxWidth: '80vw',
-                    maxHeight: '80vw',
-                    top: '-100px',
-                    right: '-20%',
-                    opacity: '0.1',
-                    filter: 'blur(80px)'
-                }}
-            ></div>
+            {/* Background Abstract Elements (Lab/Tech Feel) */}
+            <div className="position-absolute w-100 h-100 top-0 start-0 overflow-hidden" style={{ zIndex: 0 }}>
+                {/* Grid Pattern */}
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: 'radial-gradient(#94a3b8 1px, transparent 1px)',
+                    backgroundSize: '30px 30px',
+                    opacity: 0.1
+                }}></div>
 
-            <Container className="position-relative z-1">
+                {/* Floating DNA/Science Blobs */}
+                <motion.div
+                    animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="position-absolute opacity-10 d-none d-md-block"
+                    style={{ top: '15%', right: '10%', color: '#0ea5e9' }}
+                >
+                    <Dna size={120} />
+                </motion.div>
+                <motion.div
+                    animate={{ y: [0, 30, 0], rotate: [0, -10, 0] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="position-absolute opacity-10 d-none d-md-block"
+                    style={{ bottom: '15%', left: '5%', color: '#0284c7' }}
+                >
+                    <Microscope size={100} />
+                </motion.div>
+                <motion.div
+                    animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                    className="position-absolute bg-primary rounded-circle blur-3xl d-none d-md-block"
+                    style={{ width: '400px', height: '400px', top: '20%', left: '30%', filter: 'blur(100px)', zIndex: -1 }}
+                />
+            </div>
+
+            <Container className="position-relative" style={{ zIndex: 1 }}>
                 <Row className="align-items-center flex-column-reverse flex-lg-row">
                     <Col lg={6} className="mb-5 mb-lg-0 text-center text-lg-start mt-4 mt-lg-0">
                         <motion.div
@@ -38,89 +63,132 @@ const Hero = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <span className="d-inline-block px-3 py-1 rounded-pill bg-white text-primary-blue fw-bold mb-3 shadow-sm">
-                                🔬 Advanced Pathology Services
-                            </span>
-                            <h1 className="display-4 display-md-3 fw-bold mb-3" style={{ color: '#0f172a', lineHeight: '1.2' }}>
-                                Trusted Diagnostic & <span style={{ color: 'var(--primary-blue)' }}>Pathology Services</span>
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="d-inline-flex align-items-center px-3 py-1 rounded-pill bg-white border border-info mb-4 shadow-sm"
+                            >
+                                <Activity size={16} className="text-info me-2" />
+                                <span className="text-info fw-bold small text-uppercase tracking-wider">World-Class Pathology Lab</span>
+                            </motion.div>
+
+                            <h1 className="display-4 fw-bold mb-3 text-dark" style={{ letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                                Precision in Every <br />
+                                <span className="text-transparent bg-clip-text" style={{
+                                    backgroundImage: 'linear-gradient(to right, #0284c7, #0ea5e9)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                }}>Test Result</span>
                             </h1>
-                            <p className="lead text-secondary mb-4 mx-auto mx-lg-0" style={{ maxWidth: '90%' }}>
-                                Accurate. Reliable. Fast Reports. Experience world-class diagnostics with home sample collection.
+
+                            <p className="lead text-muted mb-4 mx-auto mx-lg-0" style={{ maxWidth: '90%' }}>
+                                Advanced diagnostic technology meets expert care. Get accurate reports from our NABL accredited automated laboratory.
                             </p>
 
-                            <div className="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
-                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-100 w-sm-auto">
+                            <div className="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mb-5">
+                                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                     <Button
                                         as="a"
                                         href="/bookappointment"
                                         size="lg"
-                                        className="border-0 rounded-pill px-4 py-3 d-flex align-items-center justify-content-center gap-2 shadow w-100"
-                                        style={{ backgroundColor: 'var(--primary-blue)' }}
+                                        className="rounded-pill px-5 py-3 d-flex align-items-center gap-2 shadow-lg border-0"
+                                        style={{ background: 'linear-gradient(to right, #0284c7, #0ea5e9)' }}
                                     >
                                         <Calendar size={20} />
-                                        Book Appointment
+                                        <span>Book Home Visit</span>
                                     </Button>
                                 </motion.div>
+
                             </div>
 
-                            <div className="mt-5 d-flex gap-4 justify-content-center justify-content-lg-start">
-                                <div className="d-flex flex-column">
-                                    <span className="fw-bold h4 mb-0 text-dark">10k+</span>
-                                    <span className="text-muted small">Happy Patients</span>
+                            <div className="d-flex gap-4 justify-content-center justify-content-lg-start border-top pt-4 border-2" style={{ borderColor: 'rgba(226, 232, 240, 0.8)' }}>
+                                <div className="d-flex align-items-center gap-2">
+                                    <div className="p-2 rounded-circle bg-green-100 text-success" style={{ background: '#dcfce7' }}>
+                                        <CheckCircle2 size={20} />
+                                    </div>
+                                    <div className="d-flex flex-column text-start">
+                                        <span className="fw-bold text-dark small">100% Accurate</span>
+                                        <span className="text-muted" style={{ fontSize: '12px' }}>IS0 Certified</span>
+                                    </div>
                                 </div>
-                                <div className="d-flex flex-column">
-                                    <span className="fw-bold h4 mb-0 text-dark">24/7</span>
-                                    <span className="text-muted small">Support</span>
+                                <div className="d-flex align-items-center gap-2">
+                                    <div className="p-2 rounded-circle bg-blue-100 text-primary" style={{ background: '#dbeafe' }}>
+                                        <Microscope size={20} />
+                                    </div>
+                                    <div className="d-flex flex-column text-start">
+                                        <span className="fw-bold text-dark small">Latest Tech</span>
+                                        <span className="text-muted" style={{ fontSize: '12px' }}>Fully Automated</span>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
                     </Col>
 
-                    <Col lg={6} className="text-center">
+                    <Col lg={6} className="text-center position-relative">
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="position-relative"
+                            className="position-relative d-inline-block"
                         >
-                            {/* Placeholder for standard vector illustration or similar if no 3D image */}
-                            <div className="position-relative z-1 d-inline-block">
-                                <div style={{
-                                    width: '100%',
-                                    maxWidth: '450px',
-                                    aspectRatio: '1/1',
-                                    background: 'radial-gradient(circle, #ffffff 0%, #e0f2fe 100%)',
-                                    borderRadius: '50%',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    boxShadow: '0 20px 50px rgba(14, 165, 198, 0.15)',
-                                    margin: '0 auto'
-                                }}>
-                                    <img src="https://img.freepik.com/free-vector/science-lab-concept-illustration_114360-1288.jpg?w=740&t=st=1706270000~exp=1706270600~hmac=placeholder"
-                                        alt="Lab Services"
-                                        className="img-fluid rounded-circle"
-                                        style={{ width: '90%', height: '90%', objectFit: 'cover', mixBlendMode: 'multiply' }}
-                                        onError={(e) => { e.target.style.display = 'none' }}
-                                    />
-                                </div>
+                            {/* Main Circle Background */}
+                            <div style={{
+                                width: '100%',
+                                maxWidth: '500px',
+                                aspectRatio: '1/1',
+                                background: 'linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                boxShadow: '0 25px 60px -12px rgba(2, 132, 199, 0.25)',
+                                border: '10px solid rgba(255, 255, 255, 0.6)',
+                                position: 'relative'
+                            }}>
+                                <img
+                                    src={modernLabImg}
+                                    alt="Modern Laboratory"
+                                    className="img-fluid rounded-circle p-2"
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        borderRadius: '50%'
+                                    }}
+                                    onError={(e) => {
+                                        e.target.style.display = 'none'; // Fallback if image fails
+                                    }}
+                                />
 
-                                {/* Floating Card Animation - Hide on very small screens to avoid clutter */}
+                                {/* Floating Orbit Elements */}
                                 <motion.div
-                                    animate={{ y: [0, -15, 0] }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    className="position-absolute bg-white p-3 rounded-4 shadow-lg d-none d-sm-block bs-card-float"
-                                    style={{ bottom: '10%', left: '0', maxWidth: '180px' }}
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                    className="position-absolute w-100 h-100 top-0 start-0 border border-primary border-opacity-10 rounded-circle"
+                                    style={{ transform: 'scale(1.1)' }}
                                 >
-                                    <div className="d-flex align-items-center gap-2 mb-2">
-                                        <div className="bg-success rounded-circle p-1 d-flex"><Check size={14} color="white" /></div>
-                                        <small className="fw-bold text-dark">Fast Results</small>
-                                    </div>
-                                    <div className="progress" style={{ height: '6px' }}>
-                                        <div className="progress-bar bg-success" style={{ width: '100%' }}></div>
-                                    </div>
+                                    <div className="position-absolute bg-info rounded-circle" style={{ width: '12px', height: '12px', top: '10%', left: '50%' }}></div>
                                 </motion.div>
                             </div>
+
+                            {/* Floating Stats Card */}
+                            <motion.div
+                                animate={{ y: [0, -15, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                className="position-absolute bg-white p-3 rounded-4 shadow-lg d-none d-sm-block text-start border border-light"
+                                style={{ bottom: '15%', left: '-5%', maxWidth: '200px', backdropFilter: 'blur(10px)', background: 'rgba(255, 255, 255, 0.9)' }}
+                            >
+                                <div className="d-flex align-items-center gap-2 mb-2">
+                                    <div className="bg-primary text-white p-1 rounded"><Activity size={16} /></div>
+                                    <span className="fw-bold small text-dark">Live Analysis</span>
+                                </div>
+                                <div className="d-flex align-items-end gap-2">
+                                    <h3 className="h4 fw-bold text-primary mb-0">99.9%</h3>
+                                    <small className="text-muted mb-1">Accuracy</small>
+                                </div>
+                            </motion.div>
+
                         </motion.div>
                     </Col>
                 </Row>
@@ -128,7 +196,5 @@ const Hero = () => {
         </section>
     );
 };
-
-import { Check } from 'lucide-react';
 
 export default Hero;
