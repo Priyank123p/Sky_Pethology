@@ -1,0 +1,15 @@
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="geometric-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <!-- Darker stroke and fill for visibility -->
+      <path d="M0 100 L50 0 L100 100 Z" fill="#e9ecef" stroke="#adb5bd" stroke-width="2" opacity="1"/>
+      <path d="M50 0 L100 100 L0 100 Z" fill="none" stroke="#ced4da" stroke-width="1.5" opacity="0.8"/>
+      <path d="M-50 50 L0 -50 L50 50 Z" fill="#dee2e6" opacity="0.6"/>
+      <path d="M50 50 L100 -50 L150 50 Z" fill="#dee2e6" opacity="0.6"/>
+    </pattern>
+  </defs>
+  <!-- Background rect -->
+  <rect x="0" y="0" width="100%" height="100%" fill="#f8f9fa"/>
+  <!-- Pattern rect -->
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#geometric-pattern)"/>
+</svg>

@@ -297,8 +297,25 @@ const PackagesSection = () => {
     }
 
     return (
-        <section className="section-padding mt-5">
+        <section className="section-padding mt-5 position-relative" style={{
+            backgroundColor: '#fff',
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.79)), url('/geometric_bg.svg')`,
+            backgroundSize: '400px',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+            backgroundRepeat: 'repeat',
+            minHeight: '100vh',
+            width: '100%',
+            zIndex: 0
+        }}>
             <Container>
+                <div className="text-center mb-5">
+                    <h6 className="text-primary text-uppercase fw-bold ls-2">Our Packages</h6>
+                    <h2 className="fw-bold display-5 mb-4">Choose The Best <span style={{ color: '#F37021' }}>Health Packages</span></h2>
+                    <p className="text-muted mx-auto" style={{ maxWidth: '700px' }}>
+                        We offer a wide range of health packages to suit your needs. Choose from our comprehensive list of packages to ensure your well-being.
+                    </p>
+                </div>
                 <Row>
                     {packages.map((pkg, index) => (
                         <Col key={index} lg={3} md={6} xs={12} className="mb-4">
