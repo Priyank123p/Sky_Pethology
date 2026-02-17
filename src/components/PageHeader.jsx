@@ -53,8 +53,6 @@ const PageHeader = () => {
             </video>
             <div className="position-absolute top-0 start-0 w-100 h-100" style={{ backgroundColor: 'rgba(0, 0, 0, 0.86)', zIndex: -1 }}></div>
 
-
-
             <Container className="py-5 text-center text-white position-relative" style={{ zIndex: 1 }}>
                 <h1 className="display-5 fw-bold mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
                     {title}
