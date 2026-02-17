@@ -40,7 +40,7 @@ const PageHeader = () => {
     const { title, description } = pageDetails[path];
 
     return (
-        <div className="page-header position-relative overflow-hidden page-header-spacing d-flex align-items-center justify-content-center" style={{ minHeight: '450px' }}>
+        <div className="page-header position-relative overflow-hidden  d-flex align-items-center justify-content-center" style={{ minHeight: '450px', marginTop: '92px' }}>
             <video
                 autoPlay
                 loop

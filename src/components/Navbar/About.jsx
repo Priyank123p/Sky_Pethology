@@ -6,7 +6,7 @@ import labImage from '../../assets/modern_lab.png';
 
 const About = () => {
     return (
-        <div className="pt-5" style={{ backgroundColor: '#f8fafc', overflowX: 'hidden' }}>
+        <div className="pt-1" style={{ backgroundColor: '#f8fafc', overflowX: 'hidden' }}>
             <Container className="py-5">
                 <Row className="align-items-center mb-5 g-5">
                     <Col lg={6}>
