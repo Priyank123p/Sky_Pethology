@@ -29,30 +29,6 @@ const Hero = () => {
                     backgroundSize: '30px 30px',
                     opacity: 0.1
                 }}></div>
-
-                {/* Floating DNA/Science Blobs */}
-                <motion.div
-                    animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                    className="position-absolute opacity-10 d-none d-md-block"
-                    style={{ top: '15%', right: '10%', color: '#0ea5e9' }}
-                >
-                    <Dna size={120} />
-                </motion.div>
-                <motion.div
-                    animate={{ y: [0, 30, 0], rotate: [0, -10, 0] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    className="position-absolute opacity-10 d-none d-md-block"
-                    style={{ bottom: '15%', left: '5%', color: '#0284c7' }}
-                >
-                    <Microscope size={100} />
-                </motion.div>
-                <motion.div
-                    animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                    className="position-absolute bg-primary rounded-circle blur-3xl d-none d-md-block"
-                    style={{ width: '400px', height: '400px', top: '20%', left: '30%', filter: 'blur(100px)', zIndex: -1 }}
-                />
             </div>
 
             <Container className="position-relative" style={{ zIndex: 1 }}>
