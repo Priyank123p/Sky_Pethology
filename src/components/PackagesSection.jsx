@@ -304,7 +304,6 @@ const PackagesSection = () => {
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
             backgroundRepeat: 'repeat',
-            minHeight: '100vh',
             width: '100%',
             zIndex: 0
         }}>
