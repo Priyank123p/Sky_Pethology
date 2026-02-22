@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Container, Row, Col, Card, Button, Spinner, Alert, Badge, Modal, ListGroup } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { CheckCircle, Info, ShoppingCart, Activity } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZhd9xFgTpJmvcVDAUDHwpMi3rbBpCGT2x5_614oNGtBdTmeKWy6MqWvO3QoZj4Se0iZLfLBemzo_u/pub?gid=0&single=true&output=csv';
 
@@ -248,6 +249,7 @@ const PackagesSection = () => {
     const [packages, setPackages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPackages = () => {
@@ -322,6 +324,20 @@ const PackagesSection = () => {
                         </Col>
                     ))}
                 </Row>
+
+                <div className="d-flex justify-content-center mt-5 mb-4">
+                    <Button
+                        size="lg"
+                        className="px-5 py-2 fw-bold border-0"
+                        onClick={() => navigate('/packages')}
+                        style={{
+                            background: 'linear-gradient(90deg, #0077b6, #00b4d8)',
+                            borderRadius: '30px',
+                        }}
+                    >
+                        View All Packages
+                    </Button>
+                </div>
             </Container>
             <style jsx>{`
                 .hover-lift {
