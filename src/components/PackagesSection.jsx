@@ -123,7 +123,7 @@ const PackageCard = ({ data, index }) => {
                             <div className="d-flex justify-content-center mb-2">
                                 <span className="badge bg-light text-secondary border px-2 py-1 rounded-pill d-flex align-items-center" style={{ fontSize: '0.75rem' }}>
                                     <Activity size={12} className="me-1 text-primary" />
-                                    <span className="text-primary fw-bold">Sat, Sun</span> Only
+                                    <span className="text-primary fw-bold">All Days</span>
                                 </span>
                             </div>
                         </div>
