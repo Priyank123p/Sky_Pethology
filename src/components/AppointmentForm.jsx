@@ -8,15 +8,35 @@ import Swal from 'sweetalert2';
 const AppointmentForm = () => {
     const [validated, setValidated] = useState(false);
     const [selectedTests, setSelectedTests] = useState([]);
+    const [formData, setFormData] = useState({
+        fullName: '',
+        mobileNumber: '',
+        gender: '',
+        preferredDate: '',
+        preferredTime: '',
+        address: '',
+        message: ''
+    });
 
     useEffect(() => {
         const storedTests = JSON.parse(localStorage.getItem('marketing_selected_tests') || '[]');
         if (storedTests.length > 0) {
             setSelectedTests(storedTests);
         }
+
+        // Load form data
+        const storedFormData = JSON.parse(localStorage.getItem('appointment_form_data') || '{}');
+        if (Object.keys(storedFormData).length > 0) {
+            setFormData(prev => ({ ...prev, ...storedFormData }));
+        }
     }, []);
 
-
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        const updatedFormData = { ...formData, [name]: value };
+        setFormData(updatedFormData);
+        localStorage.setItem('appointment_form_data', JSON.stringify(updatedFormData));
+    };
 
     const removeTest = (testToRemove) => {
         const updatedTests = selectedTests.filter(test => test !== testToRemove);
@@ -44,6 +64,16 @@ const AppointmentForm = () => {
             });
             setSelectedTests([]);
             localStorage.removeItem('marketing_selected_tests');
+            localStorage.removeItem('appointment_form_data');
+            setFormData({
+                fullName: '',
+                mobileNumber: '',
+                gender: '',
+                preferredDate: '',
+                preferredTime: '',
+                address: '',
+                message: ''
+            });
             form.reset();
             setValidated(false);
         }
@@ -71,19 +101,41 @@ const AppointmentForm = () => {
                                             <Col md={12}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Full Name</Form.Label>
-                                                    <Form.Control required type="text" placeholder="Name" className="bg-light border-0 py-3" />
+                                                    <Form.Control
+                                                        required
+                                                        type="text"
+                                                        placeholder="Name"
+                                                        className="bg-light border-0 py-3"
+                                                        name="fullName"
+                                                        value={formData.fullName}
+                                                        onChange={handleChange}
+                                                    />
                                                 </Form.Group>
                                             </Col>
                                             <Col md={6}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Mobile Number</Form.Label>
-                                                    <Form.Control required type="tel" placeholder="Number" className="bg-light border-0 py-3" />
+                                                    <Form.Control
+                                                        required
+                                                        type="tel"
+                                                        placeholder="Number"
+                                                        className="bg-light border-0 py-3"
+                                                        name="mobileNumber"
+                                                        value={formData.mobileNumber}
+                                                        onChange={handleChange}
+                                                    />
                                                 </Form.Group>
                                             </Col>
                                             <Col md={6}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Gender</Form.Label>
-                                                    <Form.Select required className="bg-light border-0 py-3">
+                                                    <Form.Select
+                                                        required
+                                                        className="bg-light border-0 py-3"
+                                                        name="gender"
+                                                        value={formData.gender}
+                                                        onChange={handleChange}
+                                                    >
                                                         <option value="">Select Gender</option>
                                                         <option value="Male">Male</option>
                                                         <option value="Female">Female</option>
@@ -94,13 +146,27 @@ const AppointmentForm = () => {
                                             <Col md={6}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Preferred Date</Form.Label>
-                                                    <Form.Control required type="date" className="bg-light border-0 py-3" />
+                                                    <Form.Control
+                                                        required
+                                                        type="date"
+                                                        className="bg-light border-0 py-3"
+                                                        name="preferredDate"
+                                                        value={formData.preferredDate}
+                                                        onChange={handleChange}
+                                                    />
                                                 </Form.Group>
                                             </Col>
                                             <Col md={6}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Preferred Time</Form.Label>
-                                                    <Form.Control required type="time" className="bg-light border-0 py-3" />
+                                                    <Form.Control
+                                                        required
+                                                        type="time"
+                                                        className="bg-light border-0 py-3"
+                                                        name="preferredTime"
+                                                        value={formData.preferredTime}
+                                                        onChange={handleChange}
+                                                    />
                                                 </Form.Group>
                                             </Col>
                                             <Col md={12}>
@@ -146,13 +212,29 @@ const AppointmentForm = () => {
                                             <Col md={12}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Address</Form.Label>
-                                                    <Form.Control as="textarea" rows={3} placeholder="Address" className="bg-light border-0 py-3" />
+                                                    <Form.Control
+                                                        as="textarea"
+                                                        rows={3}
+                                                        placeholder="Address"
+                                                        className="bg-light border-0 py-3"
+                                                        name="address"
+                                                        value={formData.address}
+                                                        onChange={handleChange}
+                                                    />
                                                 </Form.Group>
                                             </Col>
                                             <Col md={12}>
                                                 <Form.Group>
                                                     <Form.Label className="small fw-bold text-secondary">Message (Optional)</Form.Label>
-                                                    <Form.Control as="textarea" rows={3} placeholder="Any specific requirements?" className="bg-light border-0 py-3" />
+                                                    <Form.Control
+                                                        as="textarea"
+                                                        rows={3}
+                                                        placeholder="Any specific requirements?"
+                                                        className="bg-light border-0 py-3"
+                                                        name="message"
+                                                        value={formData.message}
+                                                        onChange={handleChange}
+                                                    />
                                                 </Form.Group>
                                             </Col>
 

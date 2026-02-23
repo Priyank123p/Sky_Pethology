@@ -54,17 +54,6 @@ const Contact = () => {
 
     return (
         <div className="fade-in bg-light min-vh-100 d-flex flex-column">
-            {/* Hero Section for Contact */}
-            <div className="position-relative py-5 bg-primary-blue text-white overflow-hidden">
-                <div className="container position-relative z-2 text-center">
-                    <h1 className="display-4 fw-bold mb-3">Get in Touch</h1>
-                    <p className="lead opacity-75 mb-0">We'd love to hear from you. Send us a message!</p>
-                </div>
-                <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10"
-                    style={{ background: 'radial-gradient(circle at top right, #fff 0%, transparent 60%)' }}>
-                </div>
-            </div>
-
             <div className="container py-5 my-4 flex-grow-1">
                 <div className="row justify-content-center">
                     <div className="col-lg-8 col-xl-7">

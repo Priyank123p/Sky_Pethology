@@ -155,9 +155,12 @@ const TestCard = ({ test }) => {
                 </Modal.Header>
                 <Modal.Body className="pt-3 px-4">
                     <div className="d-flex align-items-center mb-4 bg-light p-3 rounded-3">
-                        <div className="me-auto">
-                            <span className="text-muted d-block small text-uppercase fw-bold">Total Price</span>
+                        <div className="me-auto d-flex align-items-baseline flex-wrap gap-2">
                             <h3 className="fw-bold text-primary mb-0">₹{test['price']}</h3>
+                            <Badge bg="warning" text="dark" className="ms-2 py-2 px-3 rounded-pill fw-bold shadow-sm" style={{ fontSize: '0.75rem' }}>
+                                <Info size={14} className="me-1" />
+                                Note: Fasting 10 to 12 hours
+                            </Badge>
                         </div>
                     </div>
 

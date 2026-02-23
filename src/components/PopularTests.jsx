@@ -135,7 +135,13 @@ const TestCard = ({ test }) => {
                     <Modal.Title>{test['test-name']}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h5 className="text-primary">₹{test['price']}</h5>
+                    <div className="d-flex align-items-baseline flex-wrap gap-2 mb-3">
+                        <h5 className="text-primary mb-0">₹{test['price']}</h5>
+                        <Badge bg="warning" text="dark" className="ms-2 py-2 px-3 rounded-pill fw-bold shadow-sm" style={{ fontSize: '0.75rem' }}>
+                            <Info size={14} className="me-1" />
+                            Note: Fasting 10 to 12 hours
+                        </Badge>
+                    </div>
 
                     <Row xs={1} md={2} className="g-2 mt-3">
                         {parameters.map((param, index) => (

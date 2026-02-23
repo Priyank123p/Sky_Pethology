@@ -187,11 +187,15 @@ const PackageCard = ({ data, index }) => {
                     <div className="d-flex align-items-center mb-4 bg-light p-3 rounded-3">
                         <div className="me-auto">
                             <span className="text-muted d-block small text-uppercase fw-bold">Package Price</span>
-                            <div className="d-flex align-items-baseline">
-                                <h3 className="fw-bold text-primary mb-0 me-2">₹{finalPrice}</h3>
+                            <div className="d-flex align-items-baseline flex-wrap gap-2">
+                                <h3 className="fw-bold text-primary mb-0">₹{finalPrice}</h3>
                                 {hasDiscount && (
                                     <span className="text-muted text-decoration-line-through small">₹{originalPrice}</span>
                                 )}
+                                <Badge bg="warning" text="dark" className="ms-2 py-2 px-3 rounded-pill fw-bold shadow-sm" style={{ fontSize: '0.75rem' }}>
+                                    <Info size={14} className="me-1" />
+                                    Note: Fasting 10 to 12 hours
+                                </Badge>
                             </div>
                         </div>
                         {hasDiscount && (
