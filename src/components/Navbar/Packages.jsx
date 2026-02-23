@@ -76,12 +76,12 @@ const PackageCard = ({ data, index }) => {
                 className="h-100"
             >
                 <Card className="h-100 shadow-sm border-0 overflow-hidden package-card hover-lift" style={{ borderRadius: '15px' }}>
-                    <div className="position-relative">
+                    <div className="position-relative" style={{ backgroundColor: '#f8f9fa' }}>
                         <Card.Img
                             variant="top"
                             src={data['Img']}
                             alt={data['Packages-Name']}
-                            style={{ height: '180px', objectFit: 'cover' }}
+                            style={{ height: '180px', objectFit: 'contain', padding: '10px', borderRadius: '15px' }}
                             onError={(e) => {
                                 e.target.onerror = null;
                                 e.target.src = 'https://via.placeholder.com/400x180?text=Sky+Pathology';
