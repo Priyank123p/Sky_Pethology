@@ -310,3 +310,189 @@ body,
     /* Adjusted for Mobile/Tablet */
   }
 }
+
+/* =========================================
+   Large Screen Layout (Reducing side space)
+   ========================================= */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1500px !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1720px !important;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container {
+    max-width: 2300px !important;
+  }
+}
+
+/* Navbar Font Size for Large Screens */
+@media (min-width: 1200px) {
+  .navbar-nav .nav-link {
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .navbar-nav .nav-link {
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .navbar-nav .nav-link {
+    font-size: 1.8rem;
+  }
+}
+
+/* Navbar Logo Sizes */
+.navbar-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  transition: height 0.3s ease;
+}
+
+@media (min-width: 1200px) {
+  .navbar-logo {
+    height: 70px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .navbar-logo {
+    height: 85px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .navbar-logo {
+    height: 100px;
+  }
+}
+
+/* Navbar Button Optimization */
+.navbar-btn {
+  padding: 0.8rem 1.8rem !important;
+  font-weight: 600 !important;
+  font-size: 1rem;
+  transition: all 0.3s ease !important;
+}
+
+@media (min-width: 1200px) {
+  .navbar-btn {
+    padding: 0.9rem 2.2rem !important;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .navbar-btn {
+    padding: 1rem 2.8rem !important;
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .navbar-btn {
+    padding: 1.2rem 3.5rem !important;
+    font-size: 1.3rem;
+  }
+}
+
+/* Hero Optimization for Large Screens */
+@media (min-width: 1400px) {
+  .hero-title {
+    font-size: 3.5rem !important;
+  }
+
+  .hero-circle-container {
+    max-width: 550px !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  .hero-title {
+    font-size: 4.5rem !important;
+  }
+
+  .hero-circle-container {
+    max-width: 650px !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .hero-title {
+    font-size: 5.5rem !important;
+  }
+
+  .hero-circle-container {
+    max-width: 800px !important;
+  }
+}
+
+/* Promo Section Optimization - ONLY for Large Wide Screens */
+@media (min-width: 1400px) {
+  .promo-title {
+    font-size: 3.5rem !important;
+  }
+
+  .promo-text {
+    font-size: 1.25rem !important;
+    max-width: 700px !important;
+  }
+
+  .promo-btn {
+    padding: 1.1rem 2.22rem !important;
+  }
+
+  .promo-doctor-img {
+    max-height: 500px !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  .promo-title {
+    font-size: 4.2rem !important;
+  }
+
+  .promo-text {
+    font-size: 1.4rem !important;
+    max-width: 850px !important;
+  }
+
+  .promo-btn {
+    padding: 1.3rem 2.8rem !important;
+  }
+
+  .promo-doctor-img {
+    max-height: 580px !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .promo-title {
+    font-size: 6rem !important;
+  }
+
+  .promo-text {
+    font-size: 1.8rem !important;
+    max-width: 1200px !important;
+  }
+
+  .promo-btn {
+    padding: 1.6rem 3.8rem !important;
+  }
+
+  .promo-doctor-img {
+    max-height: 750px !important;
+    transform: translateX(-80px);
+    /* Bring closer to text */
+  }
+}

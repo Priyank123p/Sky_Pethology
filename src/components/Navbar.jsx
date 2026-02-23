@@ -33,8 +33,7 @@ const Navigation = () => {
                         <img
                             src={logo}
                             alt="Sky Pathology Logo"
-                            className="d-inline-block align-top me-2"
-                            style={{ height: '50px', width: 'auto', objectFit: 'contain' }}
+                            className="navbar-logo d-inline-block align-top me-2"
                         />
                     </Navbar.Brand>
                 </Nav.Link>
@@ -43,7 +42,7 @@ const Navigation = () => {
                     <span className="navbar-toggler-icon"></span>
                 </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mx-auto align-items-lg-center gap-2 gap-lg-3 mt-3 mt-lg-0">
+                    <Nav className="mx-auto align-items-lg-center gap-2 gap-lg-4 gap-xl-5 mt-3 mt-lg-0">
                         <Nav.Link as={Link} to="/" className="fw-medium px-2" onClick={closeMenu}>Home</Nav.Link>
                         <Nav.Link as={Link} to="/about" className="fw-medium px-2" onClick={closeMenu}>About Us</Nav.Link>
                         <Nav.Link as={Link} to="/tests" className="fw-medium px-2" onClick={closeMenu}>Tests</Nav.Link>
@@ -55,10 +54,10 @@ const Navigation = () => {
                             as={Link}
                             to="/bookappointment"
                             onClick={closeMenu}
-                            className="d-flex align-items-center justify-content-center gap-2 rounded-pill px-4 border-0 py-2"
+                            className="navbar-btn d-flex align-items-center justify-content-center gap-2 rounded-pill px-4 border-0 py-2"
                             style={{ backgroundColor: 'var(--primary-blue)' }}
                         >
-                            <CalendarCheck size={18} />
+                            <CalendarCheck size={22} />
                             <span>Book Appointment</span>
                         </Button>
                     </div>

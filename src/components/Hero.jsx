@@ -49,7 +49,7 @@ const Hero = () => {
                                 <span className="text-info fw-bold small text-uppercase tracking-wider">World-Class Pathology Lab</span>
                             </motion.div>
 
-                            <h1 className="display-4 fw-bold mb-3 text-dark" style={{ letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                            <h1 className="hero-title display-4 fw-bold mb-3 text-dark" style={{ letterSpacing: '-0.02em', lineHeight: 1.2 }}>
                                 Precision in Every <br />
                                 <span className="text-transparent bg-clip-text" style={{
                                     backgroundImage: 'linear-gradient(to right, #0284c7, #0ea5e9)',
@@ -109,7 +109,7 @@ const Hero = () => {
                             className="position-relative d-inline-block"
                         >
                             {/* Main Circle Background */}
-                            <div style={{
+                            <div className="hero-circle-container" style={{
                                 width: '100%',
                                 maxWidth: '500px',
                                 aspectRatio: '1/1',
