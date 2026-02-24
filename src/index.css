@@ -324,30 +324,38 @@ body,
   .container {
     max-width: 1720px !important;
   }
+
+  .page-header {
+    margin-top: 135px !important;
+  }
 }
 
 @media (min-width: 2560px) {
   .container {
-    max-width: 2300px !important;
+    max-width: 2350px !important;
+  }
+
+  .page-header {
+    margin-top: 140px !important;
   }
 }
 
 /* Navbar Font Size for Large Screens */
 @media (min-width: 1200px) {
   .navbar-nav .nav-link {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 1600px) {
   .navbar-nav .nav-link {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 }
 
 @media (min-width: 1920px) {
   .navbar-nav .nav-link {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -361,7 +369,7 @@ body,
 
 @media (min-width: 1200px) {
   .navbar-logo {
-    height: 70px;
+    height: 60px;
   }
 }
 
@@ -388,7 +396,7 @@ body,
 @media (min-width: 1200px) {
   .navbar-btn {
     padding: 0.9rem 2.2rem !important;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -402,7 +410,7 @@ body,
 @media (min-width: 1920px) {
   .navbar-btn {
     padding: 1.2rem 3.5rem !important;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -493,6 +501,5 @@ body,
   .promo-doctor-img {
     max-height: 750px !important;
     transform: translateX(-80px);
-    /* Bring closer to text */
   }
 }

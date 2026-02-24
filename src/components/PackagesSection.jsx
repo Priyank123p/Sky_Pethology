@@ -305,11 +305,11 @@ const PackagesSection = () => {
     return (
         <section className="section-padding mt-5 position-relative" style={{
             backgroundColor: '#fff',
-            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.79)), url('/geometric_bg.svg')`,
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.79)), url('')`,
             backgroundSize: '400px',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
-            backgroundRepeat: 'repeat',
+            backgroundRepeat: 'no-repeat',
             width: '100%',
             zIndex: 0
         }}>
