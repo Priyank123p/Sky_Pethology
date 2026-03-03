@@ -15,7 +15,7 @@ const TestCard = ({ test }) => {
 
     const handleAddTest = () => {
         const existingTests = JSON.parse(localStorage.getItem('marketing_selected_tests') || '[]');
-        const testName = test['test-name'];
+        const testName = `${test['test-name']} (₹${test['price']})`;
 
         if (!existingTests.includes(testName)) {
             existingTests.push(testName);

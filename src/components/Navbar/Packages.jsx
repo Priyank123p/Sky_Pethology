@@ -11,13 +11,21 @@ const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZhd9
 const PackageCard = ({ data, index }) => {
     const [showModal, setShowModal] = useState(false);
 
+    const originalPrice = parseFloat(data['Price']) || 0;
+    const discountPercent = parseFloat(data['Discount']?.replace('%', '')) || 0;
+    const hasDiscount = discountPercent > 0;
+
+    const finalPrice = hasDiscount
+        ? Math.round(originalPrice - (originalPrice * discountPercent / 100))
+        : originalPrice;
+
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
 
     const handleAddPackage = () => {
         // Get existing tests/packages
         const existingItems = JSON.parse(localStorage.getItem('marketing_selected_tests') || '[]');
-        const packageName = data['Packages-Name'];
+        const packageName = `${data['Packages-Name']} (₹${finalPrice})`;
 
         // Check for duplicates
         if (!existingItems.includes(packageName)) {
@@ -55,14 +63,6 @@ const PackageCard = ({ data, index }) => {
             });
         }
     };
-
-    const originalPrice = parseFloat(data['Price']) || 0;
-    const discountPercent = parseFloat(data['Discount']?.replace('%', '')) || 0;
-    const hasDiscount = discountPercent > 0;
-
-    const finalPrice = hasDiscount
-        ? Math.round(originalPrice - (originalPrice * discountPercent / 100))
-        : originalPrice;
 
     const testList = data['Test-Name'] ? data['Test-Name'].split(',').map(t => t.trim()).filter(t => t) : [];
 

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CalendarCheck, Send, X } from 'lucide-react';
 import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser';
+import { emailConfig } from '../config/emailConfig';
 
 const AppointmentForm = () => {
     const [validated, setValidated] = useState(false);
@@ -11,17 +13,31 @@ const AppointmentForm = () => {
     const [formData, setFormData] = useState({
         fullName: '',
         mobileNumber: '',
+        email: '',
         gender: '',
         preferredDate: '',
         preferredTime: '',
         address: '',
         message: ''
     });
+    const [totalAmount, setTotalAmount] = useState(0);
+
+    const calculateTotal = (tests) => {
+        let total = 0;
+        tests.forEach(test => {
+            const match = String(test).match(/₹(\d+)/);
+            if (match && match[1]) {
+                total += parseInt(match[1], 10);
+            }
+        });
+        return total;
+    };
 
     useEffect(() => {
         const storedTests = JSON.parse(localStorage.getItem('marketing_selected_tests') || '[]');
         if (storedTests.length > 0) {
             setSelectedTests(storedTests);
+            setTotalAmount(calculateTotal(storedTests));
         }
 
         // Load form data
@@ -41,41 +57,84 @@ const AppointmentForm = () => {
     const removeTest = (testToRemove) => {
         const updatedTests = selectedTests.filter(test => test !== testToRemove);
         setSelectedTests(updatedTests);
+        setTotalAmount(calculateTotal(updatedTests));
         localStorage.setItem('marketing_selected_tests', JSON.stringify(updatedTests));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === false || selectedTests.length === 0) {
             event.stopPropagation();
             setValidated(true);
         } else {
+            // Show loading state
             Swal.fire({
-                title: "Success!",
-                text: "Request received! We will call you shortly.",
-                icon: "success",
-                confirmButtonColor: "#d4af37",
-                background: "#ffffff",
-                customClass: {
-                    title: 'fw-bold',
-                    popup: 'rounded-4'
+                title: 'Sending...',
+                text: 'Please wait while we send your request.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
                 }
             });
-            setSelectedTests([]);
-            localStorage.removeItem('marketing_selected_tests');
-            localStorage.removeItem('appointment_form_data');
-            setFormData({
-                fullName: '',
-                mobileNumber: '',
-                gender: '',
-                preferredDate: '',
-                preferredTime: '',
-                address: '',
-                message: ''
-            });
-            form.reset();
-            setValidated(false);
+
+            const templateParams = {
+                fullName: formData.fullName,
+                mobileNumber: formData.mobileNumber,
+                email: formData.email,
+                gender: formData.gender,
+                preferredDate: formData.preferredDate,
+                preferredTime: formData.preferredTime,
+                address: formData.address,
+                message: formData.message,
+                selectedTests: selectedTests.join(', '),
+                totalAmount: `₹${totalAmount}`,
+            };
+
+            try {
+                await emailjs.send(
+                    emailConfig.SERVICE_ID,
+                    emailConfig.TEMPLATE_ID_APPOINTMENT,
+                    templateParams,
+                    emailConfig.PUBLIC_KEY
+                );
+
+                Swal.fire({
+                    title: "Success!",
+                    text: "Request received! We will call you shortly.",
+                    icon: "success",
+                    confirmButtonColor: "#d4af37",
+                    background: "#ffffff",
+                    customClass: {
+                        title: 'fw-bold',
+                        popup: 'rounded-4'
+                    }
+                });
+                setSelectedTests([]);
+                setTotalAmount(0);
+                localStorage.removeItem('marketing_selected_tests');
+                localStorage.removeItem('appointment_form_data');
+                setFormData({
+                    fullName: '',
+                    mobileNumber: '',
+                    email: '',
+                    gender: '',
+                    preferredDate: '',
+                    preferredTime: '',
+                    address: '',
+                    message: ''
+                });
+                form.reset();
+                setValidated(false);
+            } catch (error) {
+                console.error('EmailJS Error:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: `Something went wrong: ${error?.text || error?.message || 'Please check console'}`,
+                    icon: 'error',
+                    confirmButtonColor: '#d4af37'
+                });
+            }
         }
     };
 
@@ -108,6 +167,20 @@ const AppointmentForm = () => {
                                                         className="bg-light border-0 py-3"
                                                         name="fullName"
                                                         value={formData.fullName}
+                                                        onChange={handleChange}
+                                                    />
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={6}>
+                                                <Form.Group>
+                                                    <Form.Label className="small fw-bold text-secondary">Email</Form.Label>
+                                                    <Form.Control
+                                                        required
+                                                        type="email"
+                                                        placeholder="name@example.com"
+                                                        className="bg-light border-0 py-3"
+                                                        name="email"
+                                                        value={formData.email}
                                                         onChange={handleChange}
                                                     />
                                                 </Form.Group>
@@ -174,25 +247,31 @@ const AppointmentForm = () => {
                                                     <Form.Label className="small fw-bold text-secondary">Test Type</Form.Label>
                                                     <div className="p-3 bg-light rounded-3">
                                                         {selectedTests.length > 0 ? (
-                                                            <div className="d-flex flex-wrap gap-2 mb-2">
-                                                                {selectedTests.map((test, index) => (
-                                                                    <Badge
-                                                                        key={index}
-                                                                        bg="primary"
-                                                                        className="d-flex align-items-center gap-2 py-2 px-3 rounded-pill fw-normal shadow-sm"
-                                                                        style={{ fontSize: '0.9rem', backgroundColor: '#0077b6' }}
-                                                                    >
-                                                                        {test}
-                                                                        <X
-                                                                            size={16}
-                                                                            className="cursor-pointer hover-scale"
-                                                                            onClick={(e) => {
-                                                                                e.stopPropagation();
-                                                                                removeTest(test);
-                                                                            }}
-                                                                        />
-                                                                    </Badge>
-                                                                ))}
+                                                            <div className="d-flex flex-column gap-2 mb-2">
+                                                                <div className="d-flex flex-wrap gap-2">
+                                                                    {selectedTests.map((test, index) => (
+                                                                        <Badge
+                                                                            key={index}
+                                                                            bg="primary"
+                                                                            className="d-flex align-items-center gap-2 py-2 px-3 rounded-pill fw-normal shadow-sm"
+                                                                            style={{ fontSize: '0.9rem', backgroundColor: '#0077b6' }}
+                                                                        >
+                                                                            {test}
+                                                                            <X
+                                                                                size={16}
+                                                                                className="cursor-pointer hover-scale"
+                                                                                onClick={(e) => {
+                                                                                    e.stopPropagation();
+                                                                                    removeTest(test);
+                                                                                }}
+                                                                            />
+                                                                        </Badge>
+                                                                    ))}
+                                                                </div>
+                                                                <div className="mt-2 py-2 px-3 bg-white rounded border d-flex justify-content-between align-items-center">
+                                                                    <span className="fw-bold text-secondary">Total Amount:</span>
+                                                                    <span className="fw-bold text-success" style={{ fontSize: '1.1rem' }}>₹{totalAmount}</span>
+                                                                </div>
                                                             </div>
                                                         ) : (
                                                             <div className="text-muted small fst-italic mb-2">

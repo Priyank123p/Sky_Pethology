@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import Footer from '../Footer';
 import { Send, User, Mail, Phone, MessageSquare, FileText } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { emailConfig } from '../../config/emailConfig';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -16,40 +18,75 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Show loading state
         Swal.fire({
-            title: 'Thank You!',
-            text: 'Your inquiry has been received. We will contact you shortly.',
-            icon: 'success',
-            confirmButtonText: 'Great!',
-            confirmButtonColor: '#0077b6',
-            background: '#ffffff',
-            backdrop: `
-                rgba(0,0,123,0.1)
-                left top
-                no-repeat
-            `,
-            showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-            },
-            customClass: {
-                title: 'font-weight-bold text-dark',
-                popup: 'rounded-4 shadow-lg border-0'
+            title: 'Sending...',
+            text: 'Please wait while we send your inquiry.',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
             }
         });
 
-        setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            subject: '',
-            message: ''
-        });
+        const templateParams = {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            subject: formData.subject,
+            message: formData.message,
+        };
+
+        try {
+            await emailjs.send(
+                emailConfig.SERVICE_ID,
+                emailConfig.TEMPLATE_ID_CONTACT,
+                templateParams,
+                emailConfig.PUBLIC_KEY
+            );
+
+            Swal.fire({
+                title: 'Thank You!',
+                text: 'Your inquiry has been received. We will contact you shortly.',
+                icon: 'success',
+                confirmButtonText: 'Great!',
+                confirmButtonColor: '#0077b6',
+                background: '#ffffff',
+                backdrop: `
+                    rgba(0,0,123,0.1)
+                    left top
+                    no-repeat
+                `,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                },
+                customClass: {
+                    title: 'font-weight-bold text-dark',
+                    popup: 'rounded-4 shadow-lg border-0'
+                }
+            });
+
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                subject: '',
+                message: ''
+            });
+        } catch (error) {
+            console.error('EmailJS Error:', error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Something went wrong while sending your request. Please try again.',
+                icon: 'error',
+                confirmButtonColor: '#0077b6'
+            });
+        }
     };
 
     return (

@@ -16,7 +16,7 @@ const TestCard = ({ test }) => {
     const handleAddTest = () => {
         // Get existing tests
         const existingTests = JSON.parse(localStorage.getItem('marketing_selected_tests') || '[]');
-        const testName = test['test-name'];
+        const testName = `${test['test-name']} (₹${test['price']})`;
 
         // Check for duplicates
         if (!existingTests.includes(testName)) {
