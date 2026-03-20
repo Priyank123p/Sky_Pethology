@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button, Badge } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { Calendar, Activity, FlaskConical, Microscope, Dna, CheckCircle2 } from 'lucide-react';
-import modernLabImg from '../assets/modern_lab.png'; // Importing the lab image
+import modernLabImg from '../assets/modern_lab.png';
 
 const Hero = () => {
     return (
@@ -58,8 +58,8 @@ const Hero = () => {
                                 }}>Test Result</span>
                             </h1>
 
-                            <p className="lead text-muted mb-4 mx-auto mx-lg-0" style={{ maxWidth: '90%' }}>
-                                Advanced diagnostic technology meets expert care. Get accurate reports from our NABL accredited automated laboratory.
+                            <p className="lead text-muted mb-4 mx-auto mx-lg-0" style={{ maxWidth: '90%', fontFamily: 'Inter, sans-serif', letterSpacing: '2px' }}>
+                                Welcome to Sky trusted pathology lab for reliable and timely diagnostics. As a certified pathology test center. Whether you need quick access to diagnostic services or want the convenience of home collection, you're in the right place. With just a few clicks, you can now book blood tests online and receive expert-backed reports from the comfort of your home.
                             </p>
 
                             <div className="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mb-5">

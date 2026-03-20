@@ -78,13 +78,23 @@ const AppointmentForm = () => {
                 }
             });
 
+            // Convert time to AM/PM format
+            const formatTimeAMPM = (timeStr) => {
+                if (!timeStr) return '';
+                const [hourString, minute] = timeStr.split(':');
+                const hour = parseInt(hourString, 10);
+                const ampm = hour >= 12 ? 'PM' : 'AM';
+                const hour12 = hour % 12 || 12;
+                return `${hour12}:${minute} ${ampm}`;
+            };
+
             const templateParams = {
                 fullName: formData.fullName,
                 mobileNumber: formData.mobileNumber,
                 email: formData.email,
                 gender: formData.gender,
                 preferredDate: formData.preferredDate,
-                preferredTime: formData.preferredTime,
+                preferredTime: formatTimeAMPM(formData.preferredTime),
                 address: formData.address,
                 message: formData.message,
                 selectedTests: selectedTests.join(', '),
