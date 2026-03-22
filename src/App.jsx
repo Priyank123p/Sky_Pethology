@@ -56,7 +56,7 @@ function App() {
             <Route path="/tests" element={<Tests />} />
             <Route path="/packages" element={<Packages />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/bookappointment" element={<AppointmentForm />} />
+            <Route path="/#/bookappointment" element={<AppointmentForm />} />
           </Routes>
           <FloatingCTA />
         </div>
